@@ -1,0 +1,123 @@
+[gd_scene load_steps=8 format=3 uid="uid://djh8aflvryp06"]
+
+[ext_resource type="Script" uid="uid://dub3r7kfniych" path="res://scripts/trap.gd" id="1_62q8x"]
+[ext_resource type="Texture2D" uid="uid://cwt0nluaxmsn3" path="res://assets/wall.png" id="1_npg1n"]
+
+[sub_resource type="Animation" id="Animation_npg1n"]
+resource_name = "Open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("left_side:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-64, 0), Vector2(-192, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("right_side:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(64, 0), Vector2(192, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_62q8x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("left_side:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-64, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("right_side:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_aucmg"]
+resource_name = "close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("left_side:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-128, 0), Vector2(-64, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("right_side:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(128, 0), Vector2(64, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aucmg"]
+_data = {
+&"Open": SubResource("Animation_npg1n"),
+&"RESET": SubResource("Animation_62q8x"),
+&"close": SubResource("Animation_aucmg")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62q8x"]
+size = Vector2(128, 8)
+
+[node name="Trap" type="Node2D"]
+script = ExtResource("1_62q8x")
+
+[node name="FloorTrapAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_aucmg")
+}
+
+[node name="left_side" type="StaticBody2D" parent="."]
+position = Vector2(-64, 0)
+
+[node name="Wall" type="Sprite2D" parent="left_side"]
+texture = ExtResource("1_npg1n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left_side"]
+shape = SubResource("RectangleShape2D_62q8x")
+
+[node name="right_side" type="StaticBody2D" parent="."]
+position = Vector2(64, 0)
+
+[node name="Wall" type="Sprite2D" parent="right_side"]
+texture = ExtResource("1_npg1n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right_side"]
+shape = SubResource("RectangleShape2D_62q8x")

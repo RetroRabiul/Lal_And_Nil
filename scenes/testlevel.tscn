@@ -1,0 +1,147 @@
+[gd_scene load_steps=14 format=4 uid="uid://bg5d425nahxlm"]
+
+[ext_resource type="Script" uid="uid://dmb563e45y6eg" path="res://scripts/level_1.gd" id="1_cu7rf"]
+[ext_resource type="Texture2D" uid="uid://ci3u5yik8t7qr" path="res://assets/tile.png" id="2_o40l3"]
+[ext_resource type="Texture2D" uid="uid://bi7qhua7uggqi" path="res://assets/tile-export.png" id="3_ihbyj"]
+[ext_resource type="Texture2D" uid="uid://l3c7mvj763cv" path="res://assets/arrow.png" id="4_ifqpo"]
+[ext_resource type="PackedScene" uid="uid://6vgh3nl5ugj" path="res://scenes/player1.tscn" id="5_2bxju"]
+[ext_resource type="PackedScene" uid="uid://b4vbpkgaf2om0" path="res://scenes/player2.tscn" id="6_uows2"]
+[ext_resource type="PackedScene" uid="uid://bdujcqusfxhgf" path="res://scenes/floor_trap_button.tscn" id="7_jyu13"]
+[ext_resource type="PackedScene" uid="uid://djh8aflvryp06" path="res://scenes/trap.tscn" id="8_d1tnr"]
+[ext_resource type="FontFile" uid="uid://k0lb3q5pibgv" path="res://assets/fonts/Comfortaa/static/Comfortaa-Bold.ttf" id="9_ylnb8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cu7rf"]
+texture = ExtResource("2_o40l3")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o40l3"]
+texture = ExtResource("3_ihbyj")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_bbk5w"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 7
+sources/0 = SubResource("TileSetAtlasSource_cu7rf")
+sources/1 = SubResource("TileSetAtlasSource_o40l3")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwpf4"]
+
+[node name="TestLevel" type="Node2D"]
+script = ExtResource("1_cu7rf")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_bbk5w")
+format = 2
+
+[node name="Layer1" type="TileMapLayer" parent="TileMap"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAD8AAQAAAAAAAAABAD8AAQAAAAAAAAACAD8AAQAAAAAAAAADAD8AAQAAAAAAAAAEAD8AAQAAAAAAAAAFAD8AAQAAAAAAAAAGAD8AAQAAAAAAAAAHAD8AAQAAAAAAAAAIAD8AAQAAAAAAAAAJAD8AAQAAAAAAAAAKAD8AAQAAAAAAAAALAD8AAQAAAAAAAAAMAD8AAQAAAAAAAAANAD8AAQAAAAAAAAAOAD8AAQAAAAAAAAAPAD8AAQAAAAAAAAAQAD8AAQAAAAAAAAARAD8AAQAAAAAAAAASAD8AAQAAAAAAAAATAD8AAQAAAAAAAAAUAD8AAQAAAAAAAAAVAD8AAQAAAAAAAAAWAD8AAQAAAAAAAAAXAD8AAQAAAAAAAAAYAD8AAQAAAAAAAAAZAD8AAQAAAAAAAAAaAD8AAQAAAAAAAAAbAD8AAQAAAAAAAAAcAD8AAQAAAAAAAAAdAD8AAQAAAAAAAAAeAD8AAQAAAAAAAAAfAD8AAQAAAAAAAAAgAD8AAQAAAAAAAAAhAD8AAQAAAAAAAAAiAD8AAQAAAAAAAAAjAD8AAQAAAAAAAAAkAD8AAQAAAAAAAAAlAD8AAQAAAAAAAAAmAD8AAQAAAAAAAAAnAD8AAQAAAAAAAAAoAD8AAQAAAAAAAAApAD8AAQAAAAAAAAAqAD8AAQAAAAAAAAArAD8AAQAAAAAAAAAsAD8AAQAAAAAAAAAtAD8AAQAAAAAAAAAuAD8AAQAAAAAAAAAvAD8AAQAAAAAAAABQAD8AAQAAAAAAAABRAD8AAQAAAAAAAABSAD8AAQAAAAAAAABTAD8AAQAAAAAAAABUAD8AAQAAAAAAAABVAD8AAQAAAAAAAABWAD8AAQAAAAAAAABXAD8AAQAAAAAAAABYAD8AAQAAAAAAAABZAD8AAQAAAAAAAABaAD8AAQAAAAAAAABbAD8AAQAAAAAAAABcAD8AAQAAAAAAAABdAD8AAQAAAAAAAABeAD8AAQAAAAAAAABfAD8AAQAAAAAAAABgAD8AAQAAAAAAAABhAD8AAQAAAAAAAABiAD8AAQAAAAAAAABjAD8AAQAAAAAAAABkAD8AAQAAAAAAAABlAD8AAQAAAAAAAABmAD8AAQAAAAAAAABnAD8AAQAAAAAAAABoAD8AAQAAAAAAAABpAD8AAQAAAAAAAABqAD8AAQAAAAAAAABrAD8AAQAAAAAAAABsAD8AAQAAAAAAAABtAD8AAQAAAAAAAABuAD8AAQAAAAAAAABvAD8AAQAAAAAAAABwAD8AAQAAAAAAAABxAD8AAQAAAAAAAAByAD8AAQAAAAAAAABzAD8AAQAAAAAAAAB0AD8AAQAAAAAAAAB1AD8AAQAAAAAAAAB2AD8AAQAAAAAAAAB3AD8AAQAAAAAAAAB4AD8AAQAAAAAAAAB4AD4AAQAAAAAAAAB4AD0AAQAAAAAAAAB4ADwAAQAAAAAAAAB4ADsAAQAAAAAAAAB4ADoAAQAAAAAAAAB4ADkAAQAAAAAAAAB4ADgAAQAAAAAAAAB4ADcAAQAAAAAAAAB4ADYAAQAAAAAAAAB4ADUAAQAAAAAAAAB4ADQAAQAAAAAAAAB4ADMAAQAAAAAAAAB4ADIAAQAAAAAAAAB4ADEAAQAAAAAAAAB4ADAAAQAAAAAAAAB4AC8AAQAAAAAAAAB4AC4AAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_bbk5w")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+modulate = Color(0, 0.705882, 0, 1)
+texture_filter = 1
+position = Vector2(481, 815)
+rotation = -3.14159
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("4_ifqpo")
+
+[node name="player_1" parent="." instance=ExtResource("5_2bxju")]
+position = Vector2(82, 677)
+
+[node name="player_2" parent="." instance=ExtResource("6_uows2")]
+position = Vector2(144, 674)
+
+[node name="DieArea" type="Area2D" parent="."]
+position = Vector2(981, 1209)
+scale = Vector2(115.393, -1.00451)
+collision_layer = 16
+collision_mask = 6
+
+[node name="DieCollision" type="CollisionShape2D" parent="DieArea"]
+shape = SubResource("RectangleShape2D_wwpf4")
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="Button" parent="Buttons" instance=ExtResource("7_jyu13")]
+position = Vector2(477, 1010)
+
+[node name="Button2" parent="Buttons" instance=ExtResource("7_jyu13")]
+position = Vector2(1660, 1010)
+
+[node name="Traps" type="Node2D" parent="."]
+
+[node name="Trap" parent="Traps" instance=ExtResource("8_d1tnr")]
+position = Vector2(1024, 1016)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Player1Controls" type="Label" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+offset_right = 132.0
+offset_bottom = 75.0
+scale = Vector2(5.04, 5.04)
+theme_override_colors/font_color = Color(3.32102e-06, 0.704258, 1.54018e-06, 1)
+theme_override_fonts/font = ExtResource("9_ylnb8")
+text = " Player 1 Controls
+W, A, D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2Controls" type="Label" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -167.0
+offset_bottom = 75.0
+grow_horizontal = 0
+scale = Vector2(5.04, 5.04)
+pivot_offset = Vector2(167, 0)
+theme_override_colors/font_color = Color(0, 0.560784, 0.92549, 1)
+theme_override_fonts/font = ExtResource("9_ylnb8")
+text = "Player 2 Controls
+Left, Right, Up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 223.0
+offset_top = 92.0001
+offset_right = 391.0
+offset_bottom = 111.0
+grow_vertical = 2
+scale = Vector2(3.36, 3.36)
+theme_override_colors/font_color = Color(0, 0.705882, 0, 1)
+theme_override_fonts/font = ExtResource("9_ylnb8")
+text = "Jump on the Button"
+
+[connection signal="body_entered" from="DieArea" to="." method="_on_die_area_body_entered"]

@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,10 +11,11 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_die_area_body_entered(body: Node2D) -> void:
+func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player1") or body.is_in_group("player2"):
-		call_deferred("_scene_restart")
-		
+		#await()
+		call_deferred("_level_reset")
+		#get_tree().reload_current_scene()
 
-func _scene_restart():
+func _level_reset():
 	get_tree().reload_current_scene()

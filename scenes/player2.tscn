@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4vbpkgaf2om0"]
+[gd_scene load_steps=8 format=3 uid="uid://b4vbpkgaf2om0"]
 
 [ext_resource type="Script" uid="uid://i7n3n7pwcg57" path="res://scripts/player_2.gd" id="1_agjl5"]
-[ext_resource type="Texture2D" uid="uid://d17c6icbeblcp" path="res://assets/player2/player2.png" id="2_agjl5"]
-[ext_resource type="Texture2D" uid="uid://qnq8c6onbxa7" path="res://assets/player2/player3.png" id="3_dj65e"]
+[ext_resource type="Texture2D" uid="uid://wrd4c5lyt7lm" path="res://assets/player1/Player_walking1.png" id="2_hb4is"]
+[ext_resource type="Texture2D" uid="uid://4kf5ypmjodiv" path="res://assets/player1/Player_walking2.png" id="3_gmtae"]
+[ext_resource type="Texture2D" uid="uid://doxs7tfh4wyr2" path="res://assets/player1/Player_walking3.png" id="4_8l1to"]
+[ext_resource type="Texture2D" uid="uid://b7w2vkf2lmx56" path="res://assets/player1/Player_walking4.png" id="5_3ejgl"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_dqkch"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_24gv0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_agjl5")
+"texture": ExtResource("2_hb4is")
 }],
 "loop": true,
 "name": &"idle",
@@ -16,14 +18,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_agjl5")
+"texture": ExtResource("2_hb4is")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_dj65e")
+"texture": ExtResource("3_gmtae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8l1to")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3ejgl")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 10.0
+"speed": 7.5
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
@@ -31,15 +39,16 @@ radius = 7.5
 height = 63.0
 
 [node name="player_2" type="CharacterBody2D" groups=["player2"]]
+scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 25
 script = ExtResource("1_agjl5")
 
 [node name="PlayerAnimation" type="AnimatedSprite2D" parent="."]
-modulate = Color(0, 1, 1, 1)
+modulate = Color(2.52205e-05, 0.55988, 0.924891, 1)
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_dqkch")
-animation = &"idle"
+sprite_frames = SubResource("SpriteFrames_24gv0")
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)

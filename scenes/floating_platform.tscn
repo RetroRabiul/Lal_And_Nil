@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctauhijiugu6s"]
+
+[ext_resource type="Script" uid="uid://bfyxwlg238w5u" path="res://scripts/floating_platform.gd" id="1_52pu0"]
+[ext_resource type="Texture2D" uid="uid://cwt0nluaxmsn3" path="res://assets/wall.png" id="1_x4jxd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52pu0"]
+size = Vector2(256, 20)
+
+[node name="Floating_platform" type="StaticBody2D"]
+script = ExtResource("1_52pu0")
+
+[node name="Wall" type="Sprite2D" parent="."]
+scale = Vector2(2, 2.5)
+texture = ExtResource("1_x4jxd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_52pu0")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

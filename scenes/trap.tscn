@@ -97,6 +97,7 @@ _data = {
 size = Vector2(128, 8)
 
 [node name="Trap" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_62q8x")
 
 [node name="FloorTrapAnimation" type="AnimationPlayer" parent="."]

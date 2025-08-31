@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
 const speed = 20
-const JUMP_VELOCITY = -10.0
+const JUMP_VELOCITY = -20.0
 
 var direction := Vector2.ZERO
-var gravity = 20
+var gravity = 50
 
 var array = []
 var face_in_this_direction
@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void:
 		var last_direction = array.size() - 1
 		face_in_this_direction = array[last_direction]
 		
-		print ("MOVE TO ", face_in_this_direction)
+		#print ("MOVE TO ", face_in_this_direction)
 	else:
 		face_in_this_direction = "stop"
 	

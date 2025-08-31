@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2k7okcmai5rb"]
+
+[ext_resource type="FontFile" uid="uid://k0lb3q5pibgv" path="res://assets/fonts/Comfortaa/static/Comfortaa-Bold.ttf" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://dmaxx4p1v5otq" path="res://scripts/ui.gd" id="1_x4jx1"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_x4jx1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1812, 0.1812, 0.1812, 1)
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(0, 1, 0.290196, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.5
+offset_top = -60.5
+offset_right = 152.5
+offset_bottom = 60.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_nt7q6")
+theme_override_font_sizes/font_size = 100
+text = "Menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -48,3 +48,5 @@ func _check_level():
 func _change_scene():
 	if next_level == 2:
 		get_tree().change_scene_to_file("res://scenes/level_2.tscn")
+	elif next_level == 3:
+		get_tree().change_scene_to_file("res://scenes/level_1.tscn")

@@ -9,6 +9,7 @@ var target_pos = Vector2.ZERO
 var going_up = false
 var direction = 1
 
+
 func _ready():
 	#$Timer.wait_time = move_time
 	start_pos = global_position
@@ -26,10 +27,12 @@ func use_me(state):
 func _movement(action):
 	print(action)
 	if action == "up" and !going_up:
-		move_to.y = -200
+		going_up = true
+		#move_to.y = -200
 		_begin_moving()
-	elif action == "down":
-		move_to.y = 200
+	elif action == "down" and going_up:
+		going_up = false
+		#move_to.y = 200
 		_begin_moving()
 
 

@@ -1,12 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2k7okcmai5rb"]
+[gd_scene load_steps=4 format=3 uid="uid://b2k7okcmai5rb"]
 
 [ext_resource type="FontFile" uid="uid://k0lb3q5pibgv" path="res://assets/fonts/Comfortaa/static/Comfortaa-Bold.ttf" id="1_nt7q6"]
 [ext_resource type="Script" uid="uid://dmaxx4p1v5otq" path="res://scripts/ui.gd" id="1_x4jx1"]
+[ext_resource type="Texture2D" uid="uid://d1v151fyxqux" path="res://assets/key.png" id="3_yev5y"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_x4jx1")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="menu" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="menu"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,8 +26,9 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.1812, 0.1812, 0.1812, 1)
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="menu"]
 modulate = Color(0, 1, 0.290196, 1)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -31,4 +44,17 @@ theme_override_fonts/font = ExtResource("1_nt7q6")
 theme_override_font_sizes/font_size = 100
 text = "Menu"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="key_collected" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="key_icon" type="Sprite2D" parent="key_collected"]
+position = Vector2(1835, 84)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_yev5y")
+
+[connection signal="pressed" from="menu/Button" to="." method="_on_button_pressed"]

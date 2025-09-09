@@ -1,0 +1,134 @@
+[gd_scene load_steps=18 format=4 uid="uid://dk04m2dukfe2n"]
+
+[ext_resource type="Script" uid="uid://d0ek3b4afx2tk" path="res://scripts/level.gd" id="1_py6g0"]
+[ext_resource type="Texture2D" uid="uid://ci3u5yik8t7qr" path="res://assets/tile.png" id="2_g31h8"]
+[ext_resource type="Texture2D" uid="uid://bi7qhua7uggqi" path="res://assets/tile-export.png" id="3_hy5x3"]
+[ext_resource type="PackedScene" uid="uid://ctauhijiugu6s" path="res://scenes/floating_platform.tscn" id="4_dmmei"]
+[ext_resource type="PackedScene" uid="uid://djh8aflvryp06" path="res://scenes/trap.tscn" id="5_bee8o"]
+[ext_resource type="PackedScene" uid="uid://bdujcqusfxhgf" path="res://scenes/button.tscn" id="6_y88yj"]
+[ext_resource type="Script" uid="uid://d2tqul0ss0mjf" path="res://scripts/death_area.gd" id="7_675ay"]
+[ext_resource type="PackedScene" uid="uid://bbs2w83vq001e" path="res://scenes/door.tscn" id="8_q41qf"]
+[ext_resource type="PackedScene" uid="uid://dkoofwptaed0x" path="res://scenes/key.tscn" id="9_s0ibv"]
+[ext_resource type="PackedScene" uid="uid://6vgh3nl5ugj" path="res://scenes/player1.tscn" id="10_kqmrt"]
+[ext_resource type="PackedScene" uid="uid://b4vbpkgaf2om0" path="res://scenes/player2.tscn" id="11_u7ckc"]
+[ext_resource type="Script" uid="uid://d241100qn462m" path="res://scripts/camera.gd" id="12_rg5ri"]
+[ext_resource type="PackedScene" uid="uid://b2k7okcmai5rb" path="res://scenes/ui.tscn" id="13_lp0k0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7gny6"]
+texture = ExtResource("2_g31h8")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4nkto"]
+texture = ExtResource("3_hy5x3")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_fcfvj"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 7
+sources/1 = SubResource("TileSetAtlasSource_4nkto")
+sources/0 = SubResource("TileSetAtlasSource_7gny6")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2y5yt"]
+size = Vector2(2234, 20)
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_py6g0")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_fcfvj")
+format = 2
+
+[node name="Layer1" type="TileMapLayer" parent="TileMap"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAABAD8AAAABAAEAAAACAD8AAAABAAEAAAADAD8AAAABAAEAAAAEAD8AAAABAAEAAAAFAD8AAAABAAEAAAAGAD8AAAABAAEAAAAHAD8AAAABAAEAAAAIAD8AAAABAAEAAAAJAD8AAAABAAEAAAAKAD8AAAABAAEAAAALAD8AAAABAAEAAAAMAD8AAAABAAEAAAANAD8AAAABAAEAAAAOAD8AAAABAAEAAAAPAD8AAAABAAEAAAAQAD8AAAABAAEAAAARAD8AAAABAAEAAAASAD8AAAABAAEAAAATAD8AAAABAAEAAAAUAD8AAAABAAEAAAAVAD8AAAABAAEAAAAWAD8AAAABAAEAAAAXAD8AAAABAAEAAAAYAD8AAAABAAEAAAAZAD8AAAABAAEAAAAaAD8AAAABAAEAAAAbAD8AAAABAAEAAAAcAD8AAAABAAEAAAAdAD8AAAABAAEAAAAeAD8AAAABAAEAAAAfAD8AAAABAAEAAAAgAD8AAAABAAEAAAAhAD8AAAABAAEAAAAiAD8AAAABAAEAAAAjAD8AAAABAAEAAAAkAD8AAAABAAEAAAAlAD8AAAABAAEAAAAmAD8AAAABAAEAAAAnAD8AAAABAAEAAABQAD8AAAABAAEAAABRAD8AAAABAAEAAABSAD8AAAABAAEAAABTAD8AAAABAAEAAABUAD8AAAABAAEAAABVAD8AAAABAAEAAABWAD8AAAABAAEAAABXAD8AAAABAAEAAABYAD8AAAABAAEAAABZAD8AAAABAAEAAABaAD8AAAABAAEAAABbAD8AAAABAAEAAABcAD8AAAABAAEAAABdAD8AAAABAAEAAABeAD8AAAABAAEAAABfAD8AAAABAAEAAABgAD8AAAABAAEAAABhAD8AAAABAAEAAABiAD8AAAABAAEAAABjAD8AAAABAAEAAABkAD8AAAABAAEAAABlAD8AAAABAAEAAABmAD8AAAABAAEAAABnAD8AAAABAAEAAABoAD8AAAABAAEAAABpAD8AAAABAAEAAABqAD8AAAABAAEAAABrAD8AAAABAAEAAABsAD8AAAABAAEAAABtAD8AAAABAAEAAABuAD8AAAABAAEAAABvAD8AAAABAAEAAABwAD8AAAABAAEAAABxAD8AAAABAAEAAAByAD8AAAABAAEAAABzAD8AAAABAAEAAAB0AD8AAAABAAEAAAB1AD8AAAABAAEAAAB2AD8AAAABAAEAAABIAD8AAAABAAEAAABJAD8AAAABAAEAAABKAD8AAAABAAEAAABLAD8AAAABAAEAAABMAD8AAAABAAEAAABNAD8AAAABAAEAAABOAD8AAAABAAEAAABPAD8AAAABAAEAAABkACwAAAABAAEAAABjACwAAAABAAEAAABiACwAAAABAAEAAABhACwAAAABAAEAAABgACwAAAABAAEAAABfACwAAAABAAEAAABeACwAAAABAAEAAABdACwAAAABAAEAAABcACwAAAABAAEAAABbACwAAAABAAEAAABaACwAAAABAAEAAABZACwAAAABAAEAAABYACwAAAABAAEAAABXACwAAAABAAEAAABWACwAAAABAAEAAABVACwAAAABAAEAAABUACwAAAABAAEAAABTACwAAAABAAEAAABSACwAAAABAAEAAABRACwAAAABAAEAAABQACwAAAABAAEAAABPACwAAAABAAEAAABOACwAAAABAAEAAABNACwAAAABAAEAAABMACwAAAABAAEAAABLACwAAAABAAEAAABKACwAAAABAAEAAABJACwAAAABAAEAAABIACwAAAABAAEAAABHACwAAAABAAEAAABGACwAAAABAAEAAABFACwAAAABAAEAAABEACwAAAABAAEAAABDACwAAAABAAEAAABCACwAAAABAAEAAABBACwAAAABAAEAAABAACwAAAABAAEAAAA/ACwAAAABAAEAAAA+ACwAAAABAAEAAAA9ACwAAAABAAEAAAA8ACwAAAABAAEAAAA7ACwAAAABAAEAAAA6ACwAAAABAAEAAAA5ACwAAAABAAEAAAA4ACwAAAABAAEAAAA3ACwAAAABAAEAAAA2ACwAAAABAAEAAAA1ACwAAAABAAEAAAA0ACwAAAABAAEAAAAzACwAAAABAAEAAAAyACwAAAABAAEAAAAxACwAAAABAAEAAAAwACwAAAABAAEAAAAvACwAAAABAAEAAAAuACwAAAABAAEAAAAtACwAAAABAAEAAAAsACwAAAABAAEAAAArACwAAAABAAEAAAAqACwAAAABAAEAAAApACwAAAABAAEAAAAoACwAAAABAAEAAAAnACwAAAABAAEAAAAmACwAAAABAAEAAAAlACwAAAABAAEAAAAkACwAAAABAAEAAAAjACwAAAABAAEAAAAiACwAAAABAAEAAAAhACwAAAABAAEAAAAgACwAAAABAAEAAAAfACwAAAABAAEAAAAeACwAAAABAAEAAAAdACwAAAABAAEAAAAcACwAAAABAAEAAAAbACwAAAABAAEAAAAaACwAAAABAAEAAAAZACwAAAABAAEAAAAYACwAAAABAAEAAAAXACwAAAABAAEAAAAWACwAAAABAAEAAAAVACwAAAABAAEAAAAUACwAAAABAAEAAAATACwAAAABAAEAAAASACwAAAABAAEAAAARACwAAAABAAEAAAAQACwAAAABAAEAAAAPACwAAAABAAEAAAAOACwAAAABAAEAAAANACwAAAABAAEAAAAMACwAAAABAAEAAAALACwAAAABAAEAAAAKACwAAAABAAEAAAAJACwAAAABAAEAAAAIACwAAAABAAEAAAAHACwAAAABAAEAAAAGACwAAAABAAEAAAAFACwAAAABAAEAAAAEACwAAAABAAEAAAADACwAAAABAAEAAAACACwAAAABAAEAAAABACwAAAABAAEAAAABABkAAAABAAEAAAACABkAAAABAAEAAAADABkAAAABAAEAAAAEABkAAAABAAEAAAAFABkAAAABAAEAAAAGABkAAAABAAEAAAAHABkAAAABAAEAAAAIABkAAAABAAEAAAAJABkAAAABAAEAAAAKABkAAAABAAEAAAALABkAAAABAAEAAAAMABkAAAABAAEAAAANABkAAAABAAEAAAAOABkAAAABAAEAAAAPABkAAAABAAEAAAAQABkAAAABAAEAAAARABkAAAABAAEAAAASABkAAAABAAEAAAATABkAAAABAAEAAAAkABkAAAABAAEAAAA4ABkAAAABAAEAAAA5ABkAAAABAAEAAAA6ABkAAAABAAEAAAA7ABkAAAABAAEAAAA8ABkAAAABAAEAAAA9ABkAAAABAAEAAAA+ABkAAAABAAEAAAA/ABkAAAABAAEAAABAABkAAAABAAEAAABBABkAAAABAAEAAABCABkAAAABAAEAAABDABkAAAABAAEAAABEABkAAAABAAEAAABFABkAAAABAAEAAABGABkAAAABAAEAAABHABkAAAABAAEAAABIABkAAAABAAEAAABJABkAAAABAAEAAABKABkAAAABAAEAAABLABkAAAABAAEAAABMABkAAAABAAEAAABNABkAAAABAAEAAABOABkAAAABAAEAAABPABkAAAABAAEAAABQABkAAAABAAEAAABRABkAAAABAAEAAABSABkAAAABAAEAAABTABkAAAABAAEAAABUABkAAAABAAEAAABVABkAAAABAAEAAABWABkAAAABAAEAAABXABkAAAABAAEAAABYABkAAAABAAEAAABZABkAAAABAAEAAABaABkAAAABAAEAAABbABkAAAABAAEAAABcABkAAAABAAEAAABdABkAAAABAAEAAABeABkAAAABAAEAAABfABkAAAABAAEAAABgABkAAAABAAEAAABhABkAAAABAAEAAABiABkAAAABAAEAAABjABkAAAABAAEAAABkABkAAAABAAEAAABlABkAAAABAAEAAABmABkAAAABAAEAAABnABkAAAABAAEAAABoABkAAAABAAEAAABpABkAAAABAAEAAABqABkAAAABAAEAAABrABkAAAABAAEAAABsABkAAAABAAEAAABtABkAAAABAAEAAABuABkAAAABAAEAAABvABkAAAABAAEAAABwABkAAAABAAEAAABxABkAAAABAAEAAAByABkAAAABAAEAAABzABkAAAABAAEAAAB0ABkAAAABAAEAAAB1ABkAAAABAAEAAAB2ABkAAAABAAEAAAAUABkAAAABAAEAAAAVABkAAAABAAEAAAAWABkAAAABAAEAAAAXABkAAAABAAEAAAAYABkAAAABAAEAAAAZABkAAAABAAEAAAAaABkAAAABAAEAAAAbABkAAAABAAEAAAAcABkAAAABAAEAAAAdABkAAAABAAEAAAAeABkAAAABAAEAAAAfABkAAAABAAEAAAAgABkAAAABAAEAAAAhABkAAAABAAEAAAAiABkAAAABAAEAAAAjABkAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_fcfvj")
+
+[node name="Floating_platform" parent="." instance=ExtResource("4_dmmei")]
+position = Vector2(1745, 998)
+move_to = Vector2(0, -200)
+
+[node name="Floating_platform2" parent="." instance=ExtResource("4_dmmei")]
+position = Vector2(744, 694)
+move_to = Vector2(0, -300)
+
+[node name="Trap" parent="." instance=ExtResource("5_bee8o")]
+position = Vector2(896, 1016)
+
+[node name="button" parent="." node_paths=PackedStringArray("linked_objects") instance=ExtResource("6_y88yj")]
+position = Vector2(511, 999)
+linked_objects = [NodePath("../Trap")]
+
+[node name="button2" parent="." node_paths=PackedStringArray("linked_objects") instance=ExtResource("6_y88yj")]
+position = Vector2(1312, 999)
+linked_objects = [NodePath("../Trap"), NodePath("../Floating_platform")]
+
+[node name="button3" parent="." node_paths=PackedStringArray("linked_objects") instance=ExtResource("6_y88yj")]
+position = Vector2(1440, 695)
+linked_objects = [NodePath("../Floating_platform")]
+
+[node name="button4" parent="." node_paths=PackedStringArray("linked_objects") instance=ExtResource("6_y88yj")]
+position = Vector2(360, 695)
+linked_objects = [NodePath("../Floating_platform2")]
+
+[node name="button5" parent="." node_paths=PackedStringArray("linked_objects") instance=ExtResource("6_y88yj")]
+position = Vector2(1000, 391)
+linked_objects = [NodePath("../Floating_platform2")]
+
+[node name="Death_Area" type="Area2D" parent="."]
+collision_mask = 7
+script = ExtResource("7_675ay")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death_Area"]
+position = Vector2(928, 1434)
+shape = SubResource("RectangleShape2D_2y5yt")
+
+[node name="Door" parent="." instance=ExtResource("8_q41qf")]
+position = Vector2(1824, 320)
+next_level = 2
+
+[node name="key" parent="." instance=ExtResource("9_s0ibv")]
+position = Vector2(127, 339)
+
+[node name="player_1" parent="." instance=ExtResource("10_kqmrt")]
+position = Vector2(98, 159)
+
+[node name="player_2" parent="." instance=ExtResource("11_u7ckc")]
+position = Vector2(165, 147)
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(0, 575)
+limit_left = -1
+limit_right = 1920
+limit_bottom = 1080
+script = ExtResource("12_rg5ri")
+player1 = NodePath("../player_1")
+player2 = NodePath("../player_2")
+
+[node name="UI" parent="Camera" instance=ExtResource("13_lp0k0")]
+unique_name_in_owner = true
+
+[connection signal="body_entered" from="Death_Area" to="Death_Area" method="_on_body_entered"]

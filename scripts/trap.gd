@@ -1,18 +1,31 @@
 extends Node2D
 
-var trap_closed = false
+@export var trap_closed : bool 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$FloorTrapAnimation.play("Open")
+	if trap_closed:
+		$FloorTrapAnimation.play("close")
+	else:
+		$FloorTrapAnimation.play("Open")
 	#GlobalSignal.connect("floor_trap", _trap_state)
 
+
 func use_me(action):
-	if action and !trap_closed:
-		trap_closed = true
-		$FloorTrapAnimation.play("close")
-	elif !action and trap_closed:
-		trap_closed = false
-		$FloorTrapAnimation.play("Open")
+	if action :
+		if trap_closed:
+			trap_closed = false
+			$FloorTrapAnimation.play("Open")
+		else:
+			trap_closed = true
+			$FloorTrapAnimation.play("close")
+	elif !action:
+		if trap_closed:
+			trap_closed = false
+			$FloorTrapAnimation.play("Open")
+		else:
+			trap_closed = true
+			$FloorTrapAnimation.play("close")
 	
 
 

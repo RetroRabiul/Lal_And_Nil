@@ -15,9 +15,6 @@ func _key_owner(owner, follower):
 	other_player = follower
 	print(key_owner)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -42,6 +39,12 @@ func _check_level():
 		GlobalVars.level2_unlocked = true
 		GlobalVars.level1_completed = true  # Add this
 		GlobalSignal.emit_signal("level_complete", 1)
+		print("Level2 " + str(GlobalVars.level2_unlocked))
+		call_deferred("_change_scene")
+	elif next_level == 3:
+		GlobalVars.level3_unlocked = true
+		GlobalVars.level2_completed = true  # Add this
+		GlobalSignal.emit_signal("level_complete", 2)
 		print("Level2 " + str(GlobalVars.level2_unlocked))
 		call_deferred("_change_scene")
 

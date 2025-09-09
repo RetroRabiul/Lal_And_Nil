@@ -44,7 +44,6 @@ func _begin_moving():
 		
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", target_pos, move_time)
-
 	await (tween)
 	direction *= -1
 	

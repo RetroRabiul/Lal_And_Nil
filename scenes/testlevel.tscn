@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=4 uid="uid://bg5d425nahxlm"]
 
-[ext_resource type="Script" uid="uid://dmb563e45y6eg" path="res://scripts/level_1.gd" id="1_cu7rf"]
+[ext_resource type="Script" path="res://scripts/level_1.gd" id="1_cu7rf"]
 [ext_resource type="Texture2D" uid="uid://ci3u5yik8t7qr" path="res://assets/tile.png" id="2_o40l3"]
 [ext_resource type="Texture2D" uid="uid://bi7qhua7uggqi" path="res://assets/tile-export.png" id="3_ihbyj"]
 [ext_resource type="Texture2D" uid="uid://l3c7mvj763cv" path="res://assets/arrow.png" id="4_ifqpo"]
 [ext_resource type="PackedScene" uid="uid://6vgh3nl5ugj" path="res://scenes/player1.tscn" id="5_2bxju"]
 [ext_resource type="PackedScene" uid="uid://b4vbpkgaf2om0" path="res://scenes/player2.tscn" id="6_uows2"]
-[ext_resource type="PackedScene" uid="uid://bdujcqusfxhgf" path="res://scenes/floor_trap_button.tscn" id="7_jyu13"]
+[ext_resource type="PackedScene" uid="uid://bdujcqusfxhgf" path="res://scenes/button.tscn" id="7_jyu13"]
 [ext_resource type="PackedScene" uid="uid://djh8aflvryp06" path="res://scenes/trap.tscn" id="8_d1tnr"]
 [ext_resource type="FontFile" uid="uid://k0lb3q5pibgv" path="res://assets/fonts/Comfortaa/static/Comfortaa-Bold.ttf" id="9_ylnb8"]
 

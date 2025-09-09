@@ -1,7 +1,5 @@
 extends Node
 
-signal floor_trap(action)
-
 signal platform(action)
 
 signal key_owner(owner, follower)

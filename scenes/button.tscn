@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdujcqusfxhgf"]
+
+[ext_resource type="Script" uid="uid://d14bh6edeoc8q" path="res://scripts/button.gd" id="1_rhj8v"]
+[ext_resource type="Texture2D" uid="uid://doj8hhpwdsfyq" path="res://assets/buttons/button1.png" id="2_p056l"]
+[ext_resource type="Texture2D" uid="uid://df2lpbichec1d" path="res://assets/buttons/button2.png" id="3_nyvjv"]
+[ext_resource type="Texture2D" uid="uid://b5e5mkbuabh2c" path="res://assets/buttons/button3.png" id="4_bcsn1"]
+[ext_resource type="Texture2D" uid="uid://n1r4v1cbee8s" path="res://assets/buttons/button4.png" id="5_c43ut"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wb4aj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p056l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nyvjv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bcsn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_c43ut")
+}],
+"loop": false,
+"name": &"pressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_c43ut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bcsn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nyvjv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p056l")
+}],
+"loop": false,
+"name": &"relessed",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1bdt2"]
+radius = 8.0
+height = 56.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8m7bo"]
+radius = 8.33333
+height = 48.0
+
+[node name="button" type="StaticBody2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_rhj8v")
+
+[node name="ButtonAnimation" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_wb4aj")
+animation = &"pressed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6.66667)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_1bdt2")
+
+[node name="ButtonArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 7
+
+[node name="CollisionShape" type="CollisionShape2D" parent="ButtonArea"]
+position = Vector2(0, 3.33333)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_8m7bo")
+
+[connection signal="body_entered" from="ButtonArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="ButtonArea" to="." method="_on_area_2d_body_exited"]

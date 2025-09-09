@@ -1,13 +1,27 @@
 extends CanvasLayer
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
+var ui_visible : bool
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+@onready var key = $key_collected
+
+
+func _ready() -> void:
+	key.hide()
+	%menu.hide()
+	GlobalSignal.connect("ui_state", _ui_state)
+	if GlobalVars.key:
+		print("key_icon")
+		key.show()
+
+func _ui_state():
+	if ui_visible == false:
+		%menu.show()
+		ui_visible = true
+		print("UI showed")
+	elif ui_visible == true:
+		%menu.hide()
+		ui_visible = false
 
 
 func _on_button_pressed() -> void:

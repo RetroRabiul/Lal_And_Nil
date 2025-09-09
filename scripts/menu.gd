@@ -25,10 +25,16 @@ func _on_level_code_text_changed() -> void:
 		
 
 func _change_scene():
-	if input_code.text == "a1":
+	if input_code.text == GlobalVars.level1_code:
 		get_tree().change_scene_to_file("res://scenes/level_1.tscn")
-	elif input_code.text == "b1":
+	elif input_code.text == GlobalVars.level2_code:
 		get_tree().change_scene_to_file("res://scenes/level_2.tscn")
+	elif input_code.text == GlobalVars.level3_code:
+		get_tree().change_scene_to_file("res://scenes/level_3.tscn")
+	elif input_code.text == GlobalVars.level4_code:
+		get_tree().change_scene_to_file("res://scenes/level_4.tscn")
+	elif input_code.text == GlobalVars.level5_code:
+		get_tree().change_scene_to_file("res://scenes/level_5.tscn")
 	else:
 		%LevelCode.text = "ENTER CODE"
 		print("GameOver")

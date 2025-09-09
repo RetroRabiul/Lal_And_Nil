@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://djh8aflvryp06"]
+[gd_scene load_steps=9 format=3 uid="uid://djh8aflvryp06"]
 
 [ext_resource type="Script" uid="uid://dub3r7kfniych" path="res://scripts/trap.gd" id="1_62q8x"]
 [ext_resource type="Texture2D" uid="uid://cwt0nluaxmsn3" path="res://assets/wall.png" id="1_npg1n"]
@@ -93,11 +93,13 @@ _data = {
 &"close": SubResource("Animation_aucmg")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aucmg"]
+size = Vector2(256, 16)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_62q8x"]
-size = Vector2(128, 8)
+size = Vector2(256, 16)
 
 [node name="Trap" type="Node2D"]
-scale = Vector2(2, 2)
 script = ExtResource("1_62q8x")
 
 [node name="FloorTrapAnimation" type="AnimationPlayer" parent="."]
@@ -109,16 +111,20 @@ libraries = {
 position = Vector2(-64, 0)
 
 [node name="Wall" type="Sprite2D" parent="left_side"]
+position = Vector2(-64, 0)
 texture = ExtResource("1_npg1n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="left_side"]
-shape = SubResource("RectangleShape2D_62q8x")
+position = Vector2(-64, 0)
+shape = SubResource("RectangleShape2D_aucmg")
 
 [node name="right_side" type="StaticBody2D" parent="."]
 position = Vector2(64, 0)
 
 [node name="Wall" type="Sprite2D" parent="right_side"]
+position = Vector2(64, 0)
 texture = ExtResource("1_npg1n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="right_side"]
+position = Vector2(64, 0)
 shape = SubResource("RectangleShape2D_62q8x")

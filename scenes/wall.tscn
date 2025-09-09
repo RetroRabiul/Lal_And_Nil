@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt5wsr2twr5gc"]
+
+[ext_resource type="Script" uid="uid://q75jn5x52dwx" path="res://scripts/wall.gd" id="1_wykyb"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_uvhfp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wykyb"]
+size = Vector2(16, 256)
+
+[node name="wall" type="StaticBody2D"]
+script = ExtResource("1_wykyb")
+
+[node name="wallmesh" type="MeshInstance2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.352941, 0.494118, 0.65098, 1)
+scale = Vector2(16, 256)
+mesh = SubResource("QuadMesh_uvhfp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wykyb")

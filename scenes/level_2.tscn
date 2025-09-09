@@ -136,6 +136,8 @@ position = Vector2(0, 562)
 limit_left = -1
 limit_bottom = 1080
 script = ExtResource("11_172wr")
+player1 = NodePath("../player_1")
+player2 = NodePath("../player_2")
 
 [node name="UI" parent="Camera" instance=ExtResource("11_hey2k")]
 unique_name_in_owner = true

@@ -2,8 +2,10 @@ extends Node2D
 
 
 func _ready() -> void:
-	# Add this line to listen for level completion
 	pass
+	#GlobalSignal.key_icon.emit(false)
+	
+	
 	#GlobalSignal.connect("level_complete", _level_completed)
 #
 #

@@ -95,7 +95,7 @@ shape = SubResource("RectangleShape2D_2y5yt")
 
 [node name="Door" parent="." instance=ExtResource("8_wa6ex")]
 position = Vector2(2549, 282)
-next_level = 2
+next_level = 4
 
 [node name="key" parent="." instance=ExtResource("9_sx8yt")]
 position = Vector2(-484, 316)

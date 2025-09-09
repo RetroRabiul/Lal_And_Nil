@@ -9,6 +9,14 @@ func _ready() -> void:
 	# Check if level 1 was completed
 	if GlobalVars.level1_completed:
 		%Level_1.modulate = Color(0, 255, 0, 255)
+	if GlobalVars.level2_completed:
+		%Level_2.modulate = Color(0, 255, 0, 255)
+	if GlobalVars.level3_completed:
+		%Level_3.modulate = Color(0, 255, 0, 255)
+	if GlobalVars.level4_completed:
+		%Level_4.modulate = Color(0, 255, 0, 255)
+	if GlobalVars.level5_completed:
+		%Level_5.modulate = Color(0, 255, 0, 255)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -23,6 +31,7 @@ func _on_level_code_text_changed() -> void:
 		#%PlayButton.disabled = false
 		print(%LevelCode.text)
 		
+
 
 func _change_scene():
 	if input_code.text == GlobalVars.level1_code:
@@ -40,9 +49,11 @@ func _change_scene():
 		print("GameOver")
 		
 
+
 func _on_level_1_pressed() -> void:
 	input_code.text = GlobalVars.level1_code
 	#%Level_1.modulate = Color(0, 255, 0 ,255)
+
 
 func _on_level_2_pressed() -> void:
 	if GlobalVars.level2_unlocked == true:
@@ -51,9 +62,26 @@ func _on_level_2_pressed() -> void:
 	else:
 		input_code.text = ""
 
+
 func _on_level_3_pressed() -> void:
 	if GlobalVars.level3_unlocked == true:
 		#%Level_3.modulate = Color(0, 255, 0 ,255)
 		input_code.text = GlobalVars.level3_code
+	else:
+		input_code.text = ""
+
+
+func _on_level_4_pressed() -> void:
+	if GlobalVars.level4_unlocked == true:
+		#%Level_3.modulate = Color(0, 255, 0 ,255)
+		input_code.text = GlobalVars.level4_code
+	else:
+		input_code.text = ""
+
+
+func _on_level_5_pressed() -> void:
+	if GlobalVars.level5_unlocked == true:
+		#%Level_3.modulate = Color(0, 255, 0 ,255)
+		input_code.text = GlobalVars.level5_code
 	else:
 		input_code.text = ""

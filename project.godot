@@ -73,6 +73,7 @@ show_ui={
 2d_physics/layer_3="player2"
 2d_physics/layer_4="trap"
 2d_physics/layer_5="die_area"
+2d_physics/layer_6="wall"
 
 [rendering]
 

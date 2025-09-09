@@ -10,6 +10,9 @@ var array = []
 var face_in_this_direction
 
 
+@export var player_color: String = "green"  # or "blue"
+
+
 func _physics_process(delta: float) -> void:
 	direction.x = 0
 	direction.y += gravity * delta
@@ -26,8 +29,8 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
-	if Input.is_action_just_pressed("show_ui"):
-		GlobalSignal.emit_signal("ui_state")
+	#if Input.is_action_just_pressed("show_ui"):
+		#GlobalSignal.emit_signal("ui_state")
 	
 	
 	if Input.is_action_just_pressed("p1_left"):
@@ -77,6 +80,20 @@ func _physics_process(delta: float) -> void:
 		
 		"stop":
 			$PlayerAnimation.play("idle")
+	
+	var collision = move_and_collide(velocity * delta)
+	if collision and collision.get_collider().has_method("can_player_pass"):
+		var wall = collision.get_collider()
+		if wall.can_player_pass(player_color):
+			# If allowed to pass → use move_and_slide (ignores collision)
+			move_and_slide()
+		else:
+			# Not allowed → do real collide
+			move_and_collide(velocity * delta)
+	else:
+		# No wall or normal object → move freely
+		move_and_slide()
+
 	
 	
 	#

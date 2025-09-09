@@ -36,20 +36,42 @@ func _on_timer_timeout() -> void:
 
 func _check_level():
 	if next_level == 2:
+		GlobalVars.level1_completed = true
 		GlobalVars.level2_unlocked = true
-		GlobalVars.level1_completed = true  # Add this
-		GlobalSignal.emit_signal("level_complete", 1)
 		print("Level2 " + str(GlobalVars.level2_unlocked))
 		call_deferred("_change_scene")
+		
 	elif next_level == 3:
+		GlobalVars.level2_completed = true
 		GlobalVars.level3_unlocked = true
-		GlobalVars.level2_completed = true  # Add this
-		GlobalSignal.emit_signal("level_complete", 2)
-		print("Level2 " + str(GlobalVars.level2_unlocked))
+		print("Level3 " + str(GlobalVars.level3_unlocked))
 		call_deferred("_change_scene")
+		
+	elif next_level == 4:
+		GlobalVars.level3_completed = true
+		GlobalVars.level4_unlocked = true
+		print("Level4 " + str(GlobalVars.level4_unlocked))
+		call_deferred("_change_scene")
+		
+	elif next_level == 5:
+		GlobalVars.level4_completed = true
+		GlobalVars.level5_unlocked = true
+		print("Level5 " + str(GlobalVars.level5_unlocked))
+		call_deferred("_change_scene")
+		
+	
+	
 
 func _change_scene():
 	if next_level == 2:
 		get_tree().change_scene_to_file("res://scenes/level_2.tscn")
+		
 	elif next_level == 3:
-		get_tree().change_scene_to_file("res://scenes/level_1.tscn")
+		get_tree().change_scene_to_file("res://scenes/level_3.tscn")
+		
+	elif next_level == 4:
+		get_tree().change_scene_to_file("res://scenes/level_4.tscn")
+		
+	elif next_level == 5:
+		get_tree().change_scene_to_file("res://scenes/level_5.tscn")
+		

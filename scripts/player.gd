@@ -81,19 +81,39 @@ func _physics_process(delta: float) -> void:
 		"stop":
 			$PlayerAnimation.play("idle")
 	
-	var collision = move_and_collide(velocity * delta)
-	if collision and collision.get_collider().has_method("can_player_pass"):
+	#for body in get_overlapping_bodies():
+		#if body is StaticBody2D and body.has_variable("state"):
+			#var can_pass = false
+			#match body.state:
+				#body.WallState.NORMAL:
+					#can_pass = false
+				#body.WallState.GREEN:
+					#can_pass = player_color == "green"
+				#body.WallState.BLUE:
+					#can_pass = player_color == "blue"
+					#
+			#if can_pass:
+				## Turn off collision mask for this wall
+				#set_collision_mask_value(body.collision_layer, false)
+			#else:
+				## Turn it back on
+				#set_collision_mask_value(body.collision_layer, true)
+		## No wall or normal object → move freely
+		#
+		
+	velocity = direction * speed
+	velocity.normalized()
+	move_and_slide()
+	
+	
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
 		var wall = collision.get_collider()
-		if wall.can_player_pass(player_color):
-			# If allowed to pass → use move_and_slide (ignores collision)
-			move_and_slide()
-		else:
-			# Not allowed → do real collide
-			move_and_collide(velocity * delta)
-	else:
-		# No wall or normal object → move freely
-		move_and_slide()
-
+		if wall and wall.has_method("can_player_pass"):
+			if wall.can_player_pass(player_color):
+				# Push through by applying leftover velocity
+				global_position += velocity * get_physics_process_delta_time()
+	
 	
 	
 	#
@@ -107,10 +127,10 @@ func _physics_process(delta: float) -> void:
 		#$AnimatedSprite2D.play("idle")
 	#
 	
-	velocity = direction * speed
-	velocity.normalized()
-	
-	move_and_slide()
+	#velocity = direction * speed
+	#velocity.normalized()
+	#
+	#move_and_slide()
 	
 	#var isLeft = velocity.x < 0 
 	#$AnimatedSprite2D.flip_h = isLeft

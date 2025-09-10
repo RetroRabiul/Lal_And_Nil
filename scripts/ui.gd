@@ -17,10 +17,23 @@ func _ready() -> void:
 
 func _input(event):
 	if Input.is_action_just_pressed("show_ui"):
-		if get_tree().paused:
-			resume_game()
-		else:
-			pause_game()
+		print("UI")
+		
+		if ui_visible == false:
+			%menu.show()
+			ui_visible = true
+			print("UI showed")
+		elif ui_visible == true:
+			%menu.hide()
+			ui_visible = false
+		
+		#
+		#if get_tree().paused:
+			#print("UI_resume")
+			#resume_game()
+		#else:
+			#print("UI_paused")
+			#pause_game()
 
 
 func pause_game():
@@ -48,8 +61,12 @@ func _key_icon():
 		#ui_visible = false
 
 
-func _on_button_pressed() -> void:
+
+func _on_menu_button_pressed() -> void:
+	print("change to menu scene")
 	call_deferred("_change_scene")
-	
+
+
+
 func _change_scene():
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")

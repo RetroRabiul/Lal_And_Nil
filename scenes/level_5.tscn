@@ -112,7 +112,7 @@ position = Vector2(1824, 320)
 next_level = 2
 
 [node name="key" parent="." instance=ExtResource("9_ishhe")]
-position = Vector2(127, 339)
+position = Vector2(332, 335)
 
 [node name="player_1" parent="." instance=ExtResource("10_gnwwf")]
 position = Vector2(98, 159)

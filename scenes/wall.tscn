@@ -8,6 +8,7 @@
 size = Vector2(16, 256)
 
 [node name="wall" type="StaticBody2D"]
+collision_layer = 32
 script = ExtResource("1_wykyb")
 
 [node name="wallmesh" type="MeshInstance2D" parent="."]

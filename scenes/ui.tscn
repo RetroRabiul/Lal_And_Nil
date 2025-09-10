@@ -22,6 +22,7 @@ texture = ExtResource("3_yev5y")
 
 [node name="menu" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,7 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.152941, 0.152941, 0.152941, 0.392157)
+color = Color(0, 0.101961, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="menu/ColorRect"]
 layout_mode = 1
@@ -53,7 +54,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0199021, 0.298512, 0.0900718, 1)
 
-[node name="Button" type="Button" parent="menu"]
+[node name="MenuButton" type="Button" parent="menu"]
 modulate = Color(0, 1, 0.290196, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -71,4 +72,4 @@ theme_override_fonts/font = ExtResource("1_nt7q6")
 theme_override_font_sizes/font_size = 100
 text = "Menu"
 
-[connection signal="pressed" from="menu/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="menu/MenuButton" to="." method="_on_menu_button_pressed"]

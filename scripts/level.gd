@@ -9,6 +9,9 @@ func _ready() -> void:
 	#GlobalSignal.connect("level_complete", _level_completed)
 #
 #
+
+
+
 #func _level_completed(level):
 	#if level == 1:
 		#print("level 1 completed")

@@ -41,7 +41,7 @@ height = 63.0
 [node name="player_2" type="CharacterBody2D" groups=["player2"]]
 scale = Vector2(2, 2)
 collision_layer = 4
-collision_mask = 57
+collision_mask = 121
 script = ExtResource("1_agjl5")
 
 [node name="PlayerAnimation" type="AnimatedSprite2D" parent="."]

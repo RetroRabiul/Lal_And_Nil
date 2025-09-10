@@ -9,3 +9,5 @@ signal key_owner(owner, follower)
 signal ui_state()
 
 signal key_icon()
+
+signal powerup(owner, power)

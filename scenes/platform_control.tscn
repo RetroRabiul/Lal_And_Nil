@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo1nc7yyjkt06"]
+
+[ext_resource type="Script" uid="uid://csg3i6e6ofusm" path="res://scripts/platform_controler.gd" id="1_0k4dr"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_uvhfp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wykyb"]
+size = Vector2(16, 256)
+
+[node name="platform_control" type="StaticBody2D"]
+script = ExtResource("1_0k4dr")
+
+[node name="wallmesh" type="MeshInstance2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.352941, 0.494118, 0.65098, 1)
+scale = Vector2(16, 256)
+mesh = SubResource("QuadMesh_uvhfp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wykyb")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

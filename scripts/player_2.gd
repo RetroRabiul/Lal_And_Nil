@@ -9,6 +9,20 @@ var gravity = 50
 var array = []
 var face_in_this_direction
 
+@export var power_scale : float = 1.5
+
+
+func _ready() -> void:
+	GlobalSignal.connect("powerup", _power_achieved)
+
+
+func _power_achieved(owner, power):
+	if owner == "player2" :
+		if power == 0:
+			scale = scale / power_scale
+			print("player2 gets smaller")
+		elif power == 1:
+			print("player2 gets big")
 
 func _physics_process(delta: float) -> void:
 	direction.x = 0

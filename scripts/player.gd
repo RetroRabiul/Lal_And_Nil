@@ -9,8 +9,20 @@ var gravity = 50
 var array = []
 var face_in_this_direction
 
+@export var power_scale : float = 1.5
 
-@export var player_color: String = "green"  # or "blue"
+
+func _ready() -> void:
+	GlobalSignal.connect("powerup", _power_achieved)
+
+
+func _power_achieved(owner, power):
+	if owner == "player1" :
+		if power == 0:
+			scale = scale / power_scale
+			print("player1 gets smaller")
+		elif power == 1:
+			print("player1 gets big")
 
 
 func _physics_process(delta: float) -> void:
@@ -100,19 +112,14 @@ func _physics_process(delta: float) -> void:
 				#set_collision_mask_value(body.collision_layer, true)
 		## No wall or normal object → move freely
 		#
-		
-	velocity = direction * speed
-	velocity.normalized()
-	move_and_slide()
 	
-	
-	for i in range(get_slide_collision_count()):
-		var collision = get_slide_collision(i)
-		var wall = collision.get_collider()
-		if wall and wall.has_method("can_player_pass"):
-			if wall.can_player_pass(player_color):
-				# Push through by applying leftover velocity
-				global_position += velocity * get_physics_process_delta_time()
+	#for i in range(get_slide_collision_count()):
+		#var collision = get_slide_collision(i)
+		#var wall = collision.get_collider()
+		#if wall and wall.has_method("can_player_pass"):
+			#if wall.can_player_pass(player_color):
+				## Push through by applying leftover velocity
+				#global_position += velocity * get_physics_process_delta_time()
 	
 	
 	
@@ -127,10 +134,10 @@ func _physics_process(delta: float) -> void:
 		#$AnimatedSprite2D.play("idle")
 	#
 	
-	#velocity = direction * speed
-	#velocity.normalized()
-	#
-	#move_and_slide()
+	velocity = direction * speed
+	velocity.normalized()
+	
+	move_and_slide()
 	
 	#var isLeft = velocity.x < 0 
 	#$AnimatedSprite2D.flip_h = isLeft

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://ci28ietr5iygh"]
+[gd_scene load_steps=21 format=4 uid="uid://ci28ietr5iygh"]
 
 [ext_resource type="Script" uid="uid://d0ek3b4afx2tk" path="res://scripts/level.gd" id="1_xxvx7"]
 [ext_resource type="Texture2D" uid="uid://ci3u5yik8t7qr" path="res://assets/tile.png" id="2_68hud"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://d241100qn462m" path="res://scripts/camera.gd" id="12_5kbkd"]
 [ext_resource type="PackedScene" uid="uid://b2k7okcmai5rb" path="res://scenes/ui.tscn" id="13_u1mn7"]
 [ext_resource type="PackedScene" uid="uid://dt5wsr2twr5gc" path="res://scenes/wall.tscn" id="14_68hud"]
+[ext_resource type="PackedScene" uid="uid://dkifxwybk12lg" path="res://scenes/powerup.tscn" id="15_jwrea"]
+[ext_resource type="PackedScene" uid="uid://bo1nc7yyjkt06" path="res://scenes/platform_control.tscn" id="16_ls1u8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7gny6"]
 texture = ExtResource("2_68hud")
@@ -134,6 +136,12 @@ unique_name_in_owner = true
 
 [node name="wall" parent="." instance=ExtResource("14_68hud")]
 position = Vector2(457, 236)
-state = 1
+
+[node name="powerup" parent="." instance=ExtResource("15_jwrea")]
+position = Vector2(269, 306)
+
+[node name="platform_control" parent="." instance=ExtResource("16_ls1u8")]
+position = Vector2(748, 408)
+rotation = 1.5708
 
 [connection signal="body_entered" from="Death_Area" to="Death_Area" method="_on_body_entered"]

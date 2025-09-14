@@ -9,31 +9,31 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_dkrws")
+"texture": ExtResource("1_qxmkn")
 }, {
 "duration": 1.0,
 "texture": ExtResource("2_8di2w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_qxmkn")
+"texture": ExtResource("3_dkrws")
 }],
 "loop": false,
-"name": &"down",
+"name": &"off",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_qxmkn")
+"texture": ExtResource("3_dkrws")
 }, {
 "duration": 1.0,
 "texture": ExtResource("2_8di2w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_dkrws")
+"texture": ExtResource("1_qxmkn")
 }],
-"loop": false,
-"name": &"up",
-"speed": 5.0
+"loop": true,
+"name": &"on",
+"speed": 2.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3flmr"]
@@ -46,7 +46,7 @@ script = ExtResource("1_8di2w")
 unique_name_in_owner = true
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_efr3d")
-animation = &"down"
+animation = &"off"
 
 [node name="leverCollisionShape" type="CollisionShape2D" parent="."]
 rotation = 1.5708

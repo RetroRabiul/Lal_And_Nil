@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://ci28ietr5iygh"]
+[gd_scene load_steps=22 format=4 uid="uid://ci28ietr5iygh"]
 
 [ext_resource type="Script" uid="uid://d0ek3b4afx2tk" path="res://scripts/level.gd" id="1_xxvx7"]
 [ext_resource type="Texture2D" uid="uid://ci3u5yik8t7qr" path="res://assets/tile.png" id="2_68hud"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dt5wsr2twr5gc" path="res://scenes/wall.tscn" id="14_68hud"]
 [ext_resource type="PackedScene" uid="uid://dkifxwybk12lg" path="res://scenes/powerup.tscn" id="15_jwrea"]
 [ext_resource type="PackedScene" uid="uid://bo1nc7yyjkt06" path="res://scenes/platform_control.tscn" id="16_ls1u8"]
+[ext_resource type="PackedScene" uid="uid://dct51k1gqgc00" path="res://scenes/lever.tscn" id="17_i670b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7gny6"]
 texture = ExtResource("2_68hud")
@@ -75,7 +76,7 @@ position = Vector2(1745, 998)
 move_to = Vector2(0, -200)
 
 [node name="Floating_platform2" parent="." instance=ExtResource("4_ls1u8")]
-position = Vector2(744, 694)
+position = Vector2(744, 411)
 move_to = Vector2(0, -300)
 
 [node name="Trap" parent="." instance=ExtResource("5_i670b")]
@@ -139,12 +140,16 @@ position = Vector2(457, 236)
 state = 1
 
 [node name="powerup" parent="." instance=ExtResource("15_jwrea")]
-position = Vector2(267, 289)
+position = Vector2(404, 235)
 power = 1
 
 [node name="platform_control" parent="." instance=ExtResource("16_ls1u8")]
-position = Vector2(748, 408)
+position = Vector2(937, 114)
 rotation = 1.5708
 state = 1
+
+[node name="lever" parent="." node_paths=PackedStringArray("linked_objects") instance=ExtResource("17_i670b")]
+position = Vector2(250, 293)
+linked_objects = [NodePath("../Floating_platform2")]
 
 [connection signal="body_entered" from="Death_Area" to="Death_Area" method="_on_body_entered"]

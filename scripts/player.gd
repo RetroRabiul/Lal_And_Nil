@@ -113,14 +113,16 @@ func _physics_process(delta: float) -> void:
 		## No wall or normal object → move freely
 		#
 	
-	#for i in range(get_slide_collision_count()):
-		#var collision = get_slide_collision(i)
-		#var wall = collision.get_collider()
-		#if wall and wall.has_method("can_player_pass"):
-			#if wall.can_player_pass(player_color):
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		var item = collision.get_collider()
+		if item and item.has_method("lever_state"):
+			item.lever_state(true)
+			#print(item)
+			#if wall.lever_state(player_color):
 				## Push through by applying leftover velocity
 				#global_position += velocity * get_physics_process_delta_time()
-	
+	#
 	
 	
 	#

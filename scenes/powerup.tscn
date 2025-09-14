@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dkifxwybk12lg"]
 
 [ext_resource type="Script" uid="uid://0kv52fjoeafv" path="res://scripts/powerup.gd" id="1_406cw"]
-[ext_resource type="Texture2D" uid="uid://duh1srmdiat1l" path="res://assets/powerup/power_up1.png" id="1_ih772"]
-[ext_resource type="Texture2D" uid="uid://didwt2f344sp0" path="res://assets/powerup/power_up2.png" id="2_406cw"]
+[ext_resource type="Texture2D" uid="uid://duh1srmdiat1l" path="res://assets/power_up1.png" id="1_ih772"]
+[ext_resource type="Texture2D" uid="uid://didwt2f344sp0" path="res://assets/power_up2.png" id="2_406cw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pufsy"]
 radius = 13.0

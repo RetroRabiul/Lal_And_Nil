@@ -91,6 +91,15 @@ func _physics_process(delta: float) -> void:
 			$PlayerAnimation.play("idle")
 	
 	
+	
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		var item = collision.get_collider()
+		if item and item.has_method("lever_state"):
+			item.lever_state(true)
+	
+	
+	
 	#
 	#var direction := Input.get_axis("p1_left", "p1_right")
 	#if direction:

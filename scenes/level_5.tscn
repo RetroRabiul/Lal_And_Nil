@@ -136,12 +136,15 @@ unique_name_in_owner = true
 
 [node name="wall" parent="." instance=ExtResource("14_68hud")]
 position = Vector2(457, 236)
+state = 1
 
 [node name="powerup" parent="." instance=ExtResource("15_jwrea")]
-position = Vector2(269, 306)
+position = Vector2(267, 289)
+power = 1
 
 [node name="platform_control" parent="." instance=ExtResource("16_ls1u8")]
 position = Vector2(748, 408)
 rotation = 1.5708
+state = 1
 
 [connection signal="body_entered" from="Death_Area" to="Death_Area" method="_on_body_entered"]

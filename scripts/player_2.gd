@@ -24,6 +24,7 @@ func _power_achieved(owner, power):
 		elif power == 1:
 			print("player2 gets big")
 
+
 func _physics_process(delta: float) -> void:
 	direction.x = 0
 	direction.y += gravity * delta

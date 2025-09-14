@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://dct51k1gqgc00"]
+
+[ext_resource type="Script" uid="uid://c3lycqgvi8a6r" path="res://scripts/lever.gd" id="1_8di2w"]
+[ext_resource type="Texture2D" uid="uid://dedwn0ba72hav" path="res://assets/lever/lever3.png" id="1_qxmkn"]
+[ext_resource type="Texture2D" uid="uid://dhtk62d2jrq86" path="res://assets/lever/lever1.png" id="2_8di2w"]
+[ext_resource type="Texture2D" uid="uid://dkkpsvj6whgyy" path="res://assets/lever/lever2.png" id="3_dkrws"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efr3d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dkrws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8di2w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_qxmkn")
+}],
+"loop": false,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qxmkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8di2w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dkrws")
+}],
+"loop": false,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3flmr"]
+size = Vector2(62, 32)
+
+[node name="lever" type="StaticBody2D"]
+script = ExtResource("1_8di2w")
+
+[node name="lever" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_efr3d")
+animation = &"down"
+
+[node name="leverCollisionShape" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_3flmr")

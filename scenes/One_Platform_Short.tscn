@@ -1,0 +1,115 @@
+[gd_scene load_steps=16 format=4 uid="uid://d0ne1fb2np8ws"]
+
+[ext_resource type="Script" uid="uid://d0ek3b4afx2tk" path="res://scripts/level.gd" id="1_au5ll"]
+[ext_resource type="Texture2D" uid="uid://ci3u5yik8t7qr" path="res://assets/tile.png" id="2_cwosg"]
+[ext_resource type="Texture2D" uid="uid://bi7qhua7uggqi" path="res://assets/tile-export.png" id="3_6msnm"]
+[ext_resource type="PackedScene" uid="uid://ctauhijiugu6s" path="res://scenes/floating_platform.tscn" id="4_3ch0d"]
+[ext_resource type="Script" uid="uid://d2tqul0ss0mjf" path="res://scripts/death_area.gd" id="7_gxyvv"]
+[ext_resource type="PackedScene" uid="uid://bbs2w83vq001e" path="res://scenes/door.tscn" id="8_qncm8"]
+[ext_resource type="PackedScene" uid="uid://dkoofwptaed0x" path="res://scenes/key.tscn" id="9_nspwt"]
+[ext_resource type="PackedScene" uid="uid://6vgh3nl5ugj" path="res://scenes/player1.tscn" id="10_ppifd"]
+[ext_resource type="PackedScene" uid="uid://b4vbpkgaf2om0" path="res://scenes/player2.tscn" id="11_affyx"]
+[ext_resource type="PackedScene" uid="uid://dct51k1gqgc00" path="res://scenes/lever.tscn" id="12_utqce"]
+[ext_resource type="PackedScene" uid="uid://b2k7okcmai5rb" path="res://scenes/ui.tscn" id="13_lh5ws"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7gny6"]
+texture = ExtResource("2_cwosg")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4nkto"]
+texture = ExtResource("3_6msnm")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_fcfvj"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 7
+sources/1 = SubResource("TileSetAtlasSource_4nkto")
+sources/0 = SubResource("TileSetAtlasSource_7gny6")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2y5yt"]
+size = Vector2(2234, 20)
+
+[node name="One_Platform_Short" type="Node2D"]
+script = ExtResource("1_au5ll")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_fcfvj")
+format = 2
+
+[node name="Layer1" type="TileMapLayer" parent="TileMap"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAByAB0AAAAAAAIAAAByABwAAAAAAAIAAAByABsAAAAAAAIAAAByABoAAAAAAAIAAAByABkAAAAAAAIAAAByABgAAAAAAAIAAAByABcAAAAAAAIAAAByABYAAAAAAAIAAAByABUAAAAAAAIAAAByABQAAAAAAAIAAAADADAAAAABAAEAAAAEADAAAAABAAEAAAAFADAAAAABAAEAAAAGADAAAAABAAEAAAAHADAAAAABAAEAAAAIADAAAAABAAEAAAAJADAAAAABAAEAAAAKADAAAAABAAEAAAALADAAAAABAAEAAAAMADAAAAABAAEAAAANADAAAAABAAEAAAAOADAAAAABAAEAAAAPADAAAAABAAEAAAAQADAAAAABAAEAAAARADAAAAABAAEAAAASADAAAAABAAEAAAATADAAAAABAAEAAAAUADAAAAABAAEAAAAVADAAAAABAAEAAAAWADAAAAABAAEAAAAXADAAAAABAAEAAAAYADAAAAABAAEAAAAZADAAAAABAAEAAAAaADAAAAABAAEAAAByACQAAAAAAAIAAAByACMAAAAAAAIAAAByACIAAAAAAAIAAAByACEAAAAAAAIAAAByACAAAAAAAAIAAAByAB8AAAAAAAIAAAByAB4AAAAAAAIAAABxABkAAAABAAEAAABwABkAAAABAAEAAABvABkAAAABAAEAAABuABkAAAABAAEAAABtABkAAAABAAEAAABsABkAAAABAAEAAABrABkAAAABAAEAAABqABkAAAABAAEAAABpABkAAAABAAEAAABoABkAAAABAAEAAABnABkAAAABAAEAAABmABkAAAABAAEAAABlABkAAAABAAEAAABkABkAAAABAAEAAABjABkAAAABAAEAAABiABkAAAABAAEAAABhABkAAAABAAEAAABgABkAAAABAAEAAABfABkAAAABAAEAAABeABkAAAABAAEAAABdABkAAAABAAEAAABcABkAAAABAAEAAABbABkAAAABAAEAAAByABMAAAAAAAIAAAByABIAAAAAAAIAAAByABEAAAAAAAIAAAByABAAAAAAAAIAAAByAA8AAAAAAAIAAAByAA4AAAAAAAIAAAByAA0AAAAAAAIAAAA0ABkAAAABAAEAAABCABkAAAABAAEAAABBABkAAAABAAEAAABAABkAAAABAAEAAAA/ABkAAAABAAEAAAA+ABkAAAABAAEAAAA9ABkAAAABAAEAAAA8ABkAAAABAAEAAAA7ABkAAAABAAEAAAA6ABkAAAABAAEAAAA5ABkAAAABAAEAAAA4ABkAAAABAAEAAAA3ABkAAAABAAEAAAA2ABkAAAABAAEAAAA1ABkAAAABAAEAAABbACcAAAABAAEAAABcACcAAAABAAEAAABdACcAAAABAAEAAABeACcAAAABAAEAAABfACcAAAABAAEAAABgACcAAAABAAEAAABhACcAAAABAAEAAABiACcAAAABAAEAAABjACcAAAABAAEAAABkACcAAAABAAEAAABlACcAAAABAAEAAABmACcAAAABAAEAAABnACcAAAABAAEAAABoACcAAAABAAEAAABpACcAAAABAAEAAABqACcAAAABAAEAAABrACcAAAABAAEAAABsACcAAAABAAEAAABtACcAAAABAAEAAABuACcAAAABAAEAAABvACcAAAABAAEAAABwACcAAAABAAEAAABxACcAAAABAAEAAABCACcAAAABAAEAAABBACcAAAABAAEAAABAACcAAAABAAEAAAA/ACcAAAABAAEAAAA+ACcAAAABAAEAAAA9ACcAAAABAAEAAAA8ACcAAAABAAEAAAA7ACcAAAABAAEAAAA6ACcAAAABAAEAAAA5ACcAAAABAAEAAAA4ACcAAAABAAEAAAA3ACcAAAABAAEAAAA2ACcAAAABAAEAAAA1ACcAAAABAAEAAAA0ACcAAAABAAEAAAAzACcAAAABAAEAAAAyACcAAAABAAEAAAAxACcAAAABAAEAAAAwACcAAAABAAEAAAAvACcAAAABAAEAAAAuACcAAAABAAEAAAAtACcAAAABAAEAAAByACUAAAAAAAIAAAByACYAAAAAAAIAAAByACcAAAAAAAIAAAAzABkAAAABAAEAAAAyABkAAAABAAEAAAAxABkAAAABAAEAAAAwABkAAAABAAEAAAAvABkAAAABAAEAAAAuABkAAAABAAEAAAAtABkAAAABAAEAAAAtABgAAAAAAAIAAAAtABcAAAAAAAIAAAAtABYAAAAAAAIAAAAtABUAAAAAAAIAAAAtABQAAAAAAAIAAAAtABMAAAAAAAIAAAAtABIAAAAAAAIAAAAtABEAAAAAAAIAAAAtABAAAAAAAAIAAAAtAA8AAAAAAAIAAAAtAA4AAAAAAAIAAAAtAA0AAAAAAAIAAABDABkAAAABAAEAAABaABkAAAABAAEAAABZABkAAAABAAEAAAADAC8AAAAAAAIAAAADAC4AAAAAAAIAAAADAC0AAAAAAAIAAAADACwAAAAAAAIAAAADACsAAAAAAAIAAAADACoAAAAAAAIAAAADACkAAAAAAAIAAAADACgAAAAAAAIAAAADACcAAAAAAAIAAAADACYAAAAAAAIAAAADACUAAAAAAAIAAAADACQAAAAAAAIAAAA=")
+tile_set = SubResource("TileSet_fcfvj")
+
+[node name="Floating_platform" parent="." instance=ExtResource("4_3ch0d")]
+position = Vector2(576, 776)
+move_to = Vector2(0, -150)
+
+[node name="Floating_platform2" parent="." instance=ExtResource("4_3ch0d")]
+position = Vector2(1256, 408)
+move_to = Vector2(0, 250)
+
+[node name="Death_Area" type="Area2D" parent="."]
+collision_mask = 7
+script = ExtResource("7_gxyvv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death_Area"]
+position = Vector2(928, 1434)
+shape = SubResource("RectangleShape2D_2y5yt")
+
+[node name="Door" parent="." instance=ExtResource("8_qncm8")]
+position = Vector2(1680, 545)
+next_level = 2
+
+[node name="key" parent="." instance=ExtResource("9_nspwt")]
+position = Vector2(1696, 302)
+
+[node name="player_1" parent="." instance=ExtResource("10_ppifd")]
+position = Vector2(225, 690)
+
+[node name="player_2" parent="." instance=ExtResource("11_affyx")]
+position = Vector2(927, 304)
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(0, 575)
+limit_left = -1
+limit_right = 1920
+limit_bottom = 1080
+
+[node name="UI" parent="Camera" instance=ExtResource("13_lh5ws")]
+unique_name_in_owner = true
+
+[node name="lever" parent="." node_paths=PackedStringArray("linked_objects") instance=ExtResource("12_utqce")]
+position = Vector2(752, 289)
+linked_objects = [NodePath("../Floating_platform")]
+
+[node name="lever2" parent="." node_paths=PackedStringArray("linked_objects") instance=ExtResource("12_utqce")]
+position = Vector2(1808, 289)
+rotation = -3.14159
+linked_objects = [NodePath("../Floating_platform2")]
+
+[connection signal="body_entered" from="Death_Area" to="Death_Area" method="_on_body_entered"]

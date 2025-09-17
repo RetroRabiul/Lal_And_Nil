@@ -98,7 +98,7 @@ func _physics_process(delta: float) -> void:
 		if item and item.has_method("lever_state"):
 			item.lever_state(true)
 	
-	
+		
 	
 	#
 	#var direction := Input.get_axis("p1_left", "p1_right")

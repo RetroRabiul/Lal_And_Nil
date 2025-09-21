@@ -4,10 +4,10 @@ extends Node
 var key : bool = false
 
 
-var level1_code = "l1"
-var level2_code = "l2"
-var level3_code = "l3"
-var level4_code = "l4"
+var level1_code = "l385"
+var level2_code = "l414"
+var level3_code = "l433"
+var level4_code = "l642"
 var level5_code = "l5"
 
 var level2_unlocked = false

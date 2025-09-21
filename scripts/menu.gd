@@ -35,13 +35,13 @@ func _on_level_code_text_changed() -> void:
 
 func _change_scene():
 	if input_code.text == GlobalVars.level1_code:
-		get_tree().change_scene_to_file("res://scenes/level_1.tscn")
+		get_tree().change_scene_to_file("res://scenes/One_Platform_Short.tscn")
 	elif input_code.text == GlobalVars.level2_code:
-		get_tree().change_scene_to_file("res://scenes/level_2.tscn")
+		get_tree().change_scene_to_file("res://scenes/Oops_a_trap.tscn")
 	elif input_code.text == GlobalVars.level3_code:
-		get_tree().change_scene_to_file("res://scenes/level_3.tscn")
+		get_tree().change_scene_to_file("res://scenes/Mind_the_Gap.tscn")
 	elif input_code.text == GlobalVars.level4_code:
-		get_tree().change_scene_to_file("res://scenes/level_4.tscn")
+		get_tree().change_scene_to_file("res://scenes/Almost_Made_It.tscn")
 	elif input_code.text == GlobalVars.level5_code:
 		get_tree().change_scene_to_file("res://scenes/level_5.tscn")
 	else:

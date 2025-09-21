@@ -22,7 +22,6 @@ texture = ExtResource("3_yev5y")
 
 [node name="menu" type="Control" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

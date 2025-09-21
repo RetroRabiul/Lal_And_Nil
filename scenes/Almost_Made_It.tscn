@@ -1,0 +1,157 @@
+[gd_scene load_steps=19 format=4 uid="uid://d1qlnusf6u3gl"]
+
+[ext_resource type="Script" uid="uid://d0ek3b4afx2tk" path="res://scripts/level.gd" id="1_s2eoc"]
+[ext_resource type="Texture2D" uid="uid://ci3u5yik8t7qr" path="res://assets/tile.png" id="2_t83ri"]
+[ext_resource type="Texture2D" uid="uid://bi7qhua7uggqi" path="res://assets/tile-export.png" id="3_s13oe"]
+[ext_resource type="PackedScene" uid="uid://ctauhijiugu6s" path="res://scenes/floating_platform.tscn" id="4_us5e1"]
+[ext_resource type="PackedScene" uid="uid://djh8aflvryp06" path="res://scenes/trap.tscn" id="5_l7iiq"]
+[ext_resource type="PackedScene" uid="uid://bdujcqusfxhgf" path="res://scenes/button.tscn" id="6_87ckw"]
+[ext_resource type="PackedScene" uid="uid://bbs2w83vq001e" path="res://scenes/door.tscn" id="7_bg577"]
+[ext_resource type="PackedScene" uid="uid://dkoofwptaed0x" path="res://scenes/key.tscn" id="8_40yot"]
+[ext_resource type="PackedScene" uid="uid://6vgh3nl5ugj" path="res://scenes/player1.tscn" id="9_88f2w"]
+[ext_resource type="PackedScene" uid="uid://b4vbpkgaf2om0" path="res://scenes/player2.tscn" id="10_h38nd"]
+[ext_resource type="PackedScene" uid="uid://b2k7okcmai5rb" path="res://scenes/ui.tscn" id="11_vddl5"]
+[ext_resource type="PackedScene" uid="uid://dct51k1gqgc00" path="res://scenes/lever.tscn" id="12_l34xc"]
+[ext_resource type="PackedScene" uid="uid://dt5wsr2twr5gc" path="res://scenes/wall.tscn" id="13_f1r1w"]
+[ext_resource type="PackedScene" uid="uid://bo1nc7yyjkt06" path="res://scenes/platform_control.tscn" id="14_t83ri"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7gny6"]
+texture = ExtResource("2_t83ri")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4nkto"]
+texture = ExtResource("3_s13oe")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_fcfvj"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 7
+sources/1 = SubResource("TileSetAtlasSource_4nkto")
+sources/0 = SubResource("TileSetAtlasSource_7gny6")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2y5yt"]
+size = Vector2(2934, 20)
+
+[node name="Almost_Made_It" type="Node2D"]
+script = ExtResource("1_s2eoc")
+
+[node name="Trap" parent="." instance=ExtResource("5_l7iiq")]
+position = Vector2(1104, 472)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_fcfvj")
+format = 2
+
+[node name="Layer1" type="TileMapLayer" parent="TileMap"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAIAD8AAAABAAEAAAAJAD8AAAABAAEAAAAKAD8AAAABAAEAAAALAD8AAAABAAEAAAAMAD8AAAABAAEAAAANAD8AAAABAAEAAAAOAD8AAAABAAEAAAAPAD8AAAABAAEAAAAQAD8AAAABAAEAAAARAD8AAAABAAEAAAASAD8AAAABAAEAAAATAD8AAAABAAEAAAAUAD8AAAABAAEAAAAVAD8AAAABAAEAAAAWAD8AAAABAAEAAABpAD8AAAABAAEAAABqAD8AAAABAAEAAABrAD8AAAABAAEAAABsAD8AAAABAAEAAABtAD8AAAABAAEAAABuAD8AAAABAAEAAABvAD8AAAABAAEAAABwAD8AAAABAAEAAABxAD8AAAABAAEAAAByAD8AAAABAAEAAAAyADQAAAABAAEAAAAzADQAAAABAAEAAAAXAD8AAAABAAEAAAAYAD8AAAABAAEAAAAZAD8AAAABAAEAAAAHAD8AAAABAAEAAAAGAD8AAAABAAEAAAAFAD8AAAABAAEAAABoAD8AAAABAAEAAABnAD8AAAABAAEAAABmAD8AAAABAAEAAABlAD8AAAABAAEAAABkAD8AAAABAAEAAAA0ADQAAAABAAEAAAA1ADQAAAABAAEAAAA2ADQAAAABAAEAAAA3ADQAAAABAAEAAAA4ADQAAAABAAEAAAA5ADQAAAABAAEAAAA6ADQAAAABAAEAAAA7ADQAAAABAAEAAAA8ADQAAAABAAEAAAA9ADQAAAABAAEAAAA+ADQAAAABAAEAAAA/ADQAAAABAAEAAABAADQAAAABAAEAAABBADQAAAABAAEAAABCADQAAAABAAEAAABDADQAAAABAAEAAABEADQAAAABAAEAAABFADQAAAABAAEAAABGADQAAAABAAEAAAAaAD8AAAABAAEAAAAbAD8AAAABAAEAAAAcAD8AAAABAAEAAAAdAD8AAAABAAEAAAAeAD8AAAABAAEAAAAfAD8AAAABAAEAAABjAD8AAAABAAEAAABiAD8AAAABAAEAAABhAD8AAAABAAEAAABgAD8AAAABAAEAAABfAD8AAAABAAEAAABeAD8AAAABAAEAAABdAD8AAAABAAEAAABcAD8AAAABAAEAAABbAD8AAAABAAEAAABaAD8AAAABAAEAAABZAD8AAAABAAEAAABYAD8AAAABAAEAAAAxADQAAAABAAEAAAAfAC4AAAABAAEAAAAeAC4AAAABAAEAAAAdAC4AAAABAAEAAAAcAC4AAAABAAEAAAAbAC4AAAABAAEAAAAaAC4AAAABAAEAAAAZAC4AAAABAAEAAAAYAC4AAAABAAEAAAAXAC4AAAABAAEAAAAWAC4AAAABAAEAAAAVAC4AAAABAAEAAAAUAC4AAAABAAEAAAATAC4AAAABAAEAAAASAC4AAAABAAEAAAARAC4AAAABAAEAAABzAD8AAAABAAEAAABzAD4AAAAAAAIAAABzAD0AAAAAAAIAAABzADwAAAAAAAIAAABzADsAAAAAAAIAAABzADoAAAAAAAIAAABzADkAAAAAAAIAAABzADgAAAAAAAIAAABzADcAAAAAAAIAAABzADYAAAAAAAIAAABzADUAAAAAAAIAAABzADQAAAAAAAIAAABzADMAAAAAAAIAAAAQAB0AAAABAAEAAAARAB0AAAABAAEAAAASAB0AAAABAAEAAAATAB0AAAABAAEAAAAUAB0AAAABAAEAAAAVAB0AAAABAAEAAAAWAB0AAAABAAEAAAAXAB0AAAABAAEAAAAYAB0AAAABAAEAAAAZAB0AAAABAAEAAAAaAB0AAAABAAEAAAAbAB0AAAABAAEAAAAcAB0AAAABAAEAAAAdAB0AAAABAAEAAAAeAB0AAAABAAEAAAAfAB0AAAABAAEAAAAgAB0AAAABAAEAAAAhAB0AAAABAAEAAAAiAB0AAAABAAEAAAAjAB0AAAABAAEAAAAkAB0AAAABAAEAAAAlAB0AAAABAAEAAAAmAB0AAAABAAEAAAAnAB0AAAABAAEAAAAoAB0AAAABAAEAAAApAB0AAAABAAEAAAAqAB0AAAABAAEAAAArAB0AAAABAAEAAAAsAB0AAAABAAEAAAAtAB0AAAABAAEAAAAuAB0AAAABAAEAAAAvAB0AAAABAAEAAAAwAB0AAAABAAEAAAAxAB0AAAABAAEAAAAyAB0AAAABAAEAAAAzAB0AAAABAAEAAAA0AB0AAAABAAEAAABdAB0AAAABAAEAAABeAB0AAAABAAEAAABfAB0AAAABAAEAAABgAB0AAAABAAEAAABhAB0AAAABAAEAAABiAB0AAAABAAEAAABjAB0AAAABAAEAAABkAB0AAAABAAEAAABlAB0AAAABAAEAAABmAB0AAAABAAEAAABlAA4AAAABAAEAAABkAA4AAAABAAEAAABjAA4AAAABAAEAAABiAA4AAAABAAEAAABhAA4AAAABAAEAAABgAA4AAAABAAEAAABfAA4AAAABAAEAAABeAA4AAAABAAEAAABdAA4AAAABAAEAAABcAA4AAAABAAEAAABbAA4AAAABAAEAAABaAA4AAAABAAEAAABZAA4AAAABAAEAAABYAA4AAAABAAEAAABXAA4AAAABAAEAAABWAA4AAAABAAEAAABVAA4AAAABAAEAAABUAA4AAAABAAEAAABTAA4AAAABAAEAAABSAA4AAAABAAEAAABRAA4AAAABAAEAAABQAA4AAAABAAEAAABPAA4AAAABAAEAAABOAA4AAAABAAEAAABNAA4AAAABAAEAAABMAA4AAAABAAEAAABLAA4AAAABAAEAAABKAA4AAAABAAEAAABHAA4AAAABAAEAAABGAA4AAAABAAEAAABFAA4AAAABAAEAAABEAA4AAAABAAEAAABJAA4AAAABAAEAAABIAA4AAAABAAEAAABDAA4AAAABAAEAAABCAA4AAAABAAEAAABBAA4AAAABAAEAAABAAA4AAAABAAEAAAA/AA4AAAABAAEAAAA+AA4AAAABAAEAAAA9AA4AAAABAAEAAAA8AA4AAAABAAEAAAA7AA4AAAABAAEAAAA6AA4AAAABAAEAAAA5AA4AAAABAAEAAAA4AA4AAAABAAEAAAA3AA4AAAABAAEAAAA2AA4AAAABAAEAAAA1AA4AAAABAAEAAAA0AA4AAAABAAEAAAAzAA4AAAABAAEAAAAyAA4AAAABAAEAAAAxAA4AAAABAAEAAAAwAA4AAAABAAEAAAAvAA4AAAABAAEAAABZAC4AAAABAAEAAABaAC4AAAABAAEAAABbAC4AAAABAAEAAABcAC4AAAABAAEAAABdAC4AAAABAAEAAABeAC4AAAABAAEAAABfAC4AAAABAAEAAABgAC4AAAABAAEAAABhAC4AAAABAAEAAABiAC4AAAABAAEAAABjAC4AAAABAAEAAABkAC4AAAABAAEAAABlAC4AAAABAAEAAABmAC4AAAABAAEAAABnAC4AAAABAAEAAABoAC4AAAABAAEAAABpAC4AAAABAAEAAABqAC4AAAABAAEAAABrAC4AAAABAAEAAABsAC4AAAABAAEAAABtAC4AAAABAAEAAABuAC4AAAABAAEAAABvAC4AAAABAAEAAABwAC4AAAABAAEAAABxAC4AAAABAAEAAAByAC4AAAABAAEAAABzAC4AAAABAAEAAABzAC0AAAAAAAIAAABzACwAAAAAAAIAAABzACsAAAAAAAIAAABzACoAAAAAAAIAAABzACkAAAAAAAIAAABzACgAAAAAAAIAAABzACcAAAAAAAIAAABzACYAAAAAAAIAAABzACUAAAAAAAIAAABzACQAAAAAAAIAAABzACMAAAAAAAIAAABzACIAAAAAAAIAAABzACEAAAAAAAIAAABcAB0AAAABAAEAAABbAB0AAAABAAEAAABaAB0AAAABAAEAAABZAB0AAAABAAEAAABYAB0AAAABAAEAAABXAB0AAAABAAEAAABWAB0AAAABAAEAAABVAB0AAAABAAEAAAA=")
+tile_set = SubResource("TileSet_fcfvj")
+
+[node name="Floating_platform" parent="." instance=ExtResource("4_us5e1")]
+position = Vector2(648, 1016)
+move_to = Vector2(0, -300)
+
+[node name="Floating_platform2" parent="." instance=ExtResource("4_us5e1")]
+position = Vector2(1272, 1016)
+move_to = Vector2(0, -300)
+
+[node name="Floating_platform3" parent="." instance=ExtResource("4_us5e1")]
+position = Vector2(136, 744)
+move_to = Vector2(0, -300)
+
+[node name="Floating_platform4" parent="." instance=ExtResource("4_us5e1")]
+position = Vector2(1784, 472)
+move_to = Vector2(0, -300)
+
+[node name="button" parent="." node_paths=PackedStringArray("linked_objects") instance=ExtResource("6_87ckw")]
+position = Vector2(960, 822)
+linked_objects = [NodePath("../Floating_platform2")]
+
+[node name="button2" parent="." node_paths=PackedStringArray("linked_objects") instance=ExtResource("6_87ckw")]
+position = Vector2(383, 727)
+linked_objects = [NodePath("../Floating_platform3")]
+
+[node name="button3" parent="." node_paths=PackedStringArray("linked_objects") instance=ExtResource("6_87ckw")]
+position = Vector2(367, 455)
+linked_objects = [NodePath("../Floating_platform3")]
+
+[node name="button4" parent="." node_paths=PackedStringArray("linked_objects") instance=ExtResource("6_87ckw")]
+position = Vector2(671, 455)
+linked_objects = [NodePath("../platform_control")]
+
+[node name="button5" parent="." node_paths=PackedStringArray("linked_objects") instance=ExtResource("6_87ckw")]
+position = Vector2(1506, 455)
+linked_objects = [NodePath("../Trap"), NodePath("../Floating_platform4")]
+
+[node name="button6" parent="." node_paths=PackedStringArray("linked_objects") instance=ExtResource("6_87ckw")]
+position = Vector2(1506, 215)
+linked_objects = [NodePath("../Trap"), NodePath("../Floating_platform4")]
+
+[node name="Death_Area" type="Area2D" parent="."]
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death_Area"]
+position = Vector2(928, 1434)
+shape = SubResource("RectangleShape2D_2y5yt")
+
+[node name="Door" parent="." instance=ExtResource("7_bg577")]
+position = Vector2(1040, 144)
+next_level = 5
+
+[node name="key" parent="." instance=ExtResource("8_40yot")]
+position = Vector2(1763, 668)
+
+[node name="player_1" parent="." instance=ExtResource("9_88f2w")]
+position = Vector2(189, 897)
+
+[node name="player_2" parent="." instance=ExtResource("10_h38nd")]
+position = Vector2(1685, 913)
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(0, 575)
+limit_left = -1
+limit_right = 1920
+limit_bottom = 1080
+
+[node name="UI" parent="Camera" instance=ExtResource("11_vddl5")]
+unique_name_in_owner = true
+
+[node name="lever" parent="." node_paths=PackedStringArray("linked_objects") instance=ExtResource("12_l34xc")]
+position = Vector2(1823, 894)
+rotation = -3.14159
+linked_objects = [NodePath("../Floating_platform")]
+
+[node name="wall" parent="." instance=ExtResource("13_f1r1w")]
+position = Vector2(1568, 608)
+state = 1
+
+[node name="platform_control" parent="." instance=ExtResource("14_t83ri")]
+position = Vector2(504, 336)
+move_to = Vector2(0, -200)
+state = 2
+
+[connection signal="body_entered" from="Death_Area" to="." method="_on_death_area_body_entered"]

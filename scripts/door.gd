@@ -64,13 +64,13 @@ func _check_level():
 
 func _change_scene():
 	if next_level == 2:
-		get_tree().change_scene_to_file("res://scenes/level_2.tscn")
+		get_tree().change_scene_to_file("res://scenes/Oops_a_trap.tscn")
 		
 	elif next_level == 3:
-		get_tree().change_scene_to_file("res://scenes/level_3.tscn")
+		get_tree().change_scene_to_file("res://scenes/Mind_the_Gap.tscn")
 		
 	elif next_level == 4:
-		get_tree().change_scene_to_file("res://scenes/level_4.tscn")
+		get_tree().change_scene_to_file("res://scenes/Almost_Made_It.tscn")
 		
 	elif next_level == 5:
 		get_tree().change_scene_to_file("res://scenes/level_5.tscn")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkoofwptaed0x"]
+[gd_scene load_steps=5 format=3 uid="uid://dkoofwptaed0x"]
 
 [ext_resource type="Script" uid="uid://dddne5k30cjfc" path="res://scripts/key.gd" id="1_fttkb"]
 [ext_resource type="Texture2D" uid="uid://d1v151fyxqux" path="res://assets/key.png" id="1_yk2u2"]
+[ext_resource type="AudioStream" uid="uid://ngqtp11p026e" path="res://assets/Audio/PickUp.wav" id="3_wy8tx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fttkb"]
 radius = 18.0
@@ -16,5 +17,8 @@ texture = ExtResource("1_yk2u2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fttkb")
+
+[node name="Collected_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wy8tx")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

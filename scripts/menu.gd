@@ -51,11 +51,13 @@ func _change_scene():
 
 
 func _on_level_1_pressed() -> void:
+	$Button_Pressed_Sound.playing = true
 	input_code.text = GlobalVars.level1_code
 	#%Level_1.modulate = Color(0, 255, 0 ,255)
 
 
 func _on_level_2_pressed() -> void:
+	$Button_Pressed_Sound.playing = true
 	if GlobalVars.level2_unlocked == true:
 		#%Level_2.modulate = Color(0, 255, 0 ,255)
 		input_code.text = GlobalVars.level2_code
@@ -64,6 +66,7 @@ func _on_level_2_pressed() -> void:
 
 
 func _on_level_3_pressed() -> void:
+	$Button_Pressed_Sound.playing = true
 	if GlobalVars.level3_unlocked == true:
 		#%Level_3.modulate = Color(0, 255, 0 ,255)
 		input_code.text = GlobalVars.level3_code
@@ -72,6 +75,7 @@ func _on_level_3_pressed() -> void:
 
 
 func _on_level_4_pressed() -> void:
+	$Button_Pressed_Sound.playing = true
 	if GlobalVars.level4_unlocked == true:
 		#%Level_3.modulate = Color(0, 255, 0 ,255)
 		input_code.text = GlobalVars.level4_code
@@ -80,6 +84,7 @@ func _on_level_4_pressed() -> void:
 
 
 func _on_level_5_pressed() -> void:
+	$Button_Pressed_Sound.playing = true
 	if GlobalVars.level5_unlocked == true:
 		#%Level_3.modulate = Color(0, 255, 0 ,255)
 		input_code.text = GlobalVars.level5_code

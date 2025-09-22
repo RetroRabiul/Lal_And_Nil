@@ -27,7 +27,7 @@ func _power_achieved(owner, power):
 
 func _physics_process(delta: float) -> void:
 	direction.x = 0
-	direction.y += gravity * delta
+	#direction.y += gravity * delta
 	
 	
 	# Add the gravity.
@@ -111,7 +111,7 @@ func _physics_process(delta: float) -> void:
 		#$AnimatedSprite2D.play("idle")
 	#
 	
-	velocity = direction * speed
+	velocity.x = direction.x * speed
 	velocity.normalized()
 	
 	move_and_slide()

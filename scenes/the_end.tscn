@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckep20ejn47yq"]
+
+[ext_resource type="Script" uid="uid://wj3ccsphlwvt" path="res://scripts/the_end.gd" id="1_2x4e2"]
+[ext_resource type="FontFile" uid="uid://k0lb3q5pibgv" path="res://assets/fonts/Comfortaa/static/Comfortaa-Bold.ttf" id="1_a842l"]
+
+[node name="TheEnd" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2x4e2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.290196, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -582.0
+offset_top = -240.0
+offset_right = 582.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_a842l")
+theme_override_font_sizes/font_size = 200
+text = "Game Over"
+
+[node name="MenuButton" type="Button" parent="."]
+modulate = Color(0, 1, 0.290196, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = 20.0
+offset_right = 205.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_a842l")
+theme_override_font_sizes/font_size = 100
+text = "Menu"
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

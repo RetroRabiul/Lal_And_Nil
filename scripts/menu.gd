@@ -43,7 +43,7 @@ func _change_scene():
 	elif input_code.text == GlobalVars.level4_code:
 		get_tree().change_scene_to_file("res://scenes/Almost_Made_It.tscn")
 	elif input_code.text == GlobalVars.level5_code:
-		get_tree().change_scene_to_file("res://scenes/level_5.tscn")
+		get_tree().change_scene_to_file("res://scenes/One_Step_Away.tscn")
 	else:
 		%LevelCode.text = "ENTER CODE"
 		print("GameOver")
@@ -58,7 +58,7 @@ func _on_level_1_pressed() -> void:
 
 func _on_level_2_pressed() -> void:
 	$Button_Pressed_Sound.playing = true
-	if GlobalVars.level2_unlocked == true:
+	if GlobalVars.level2_unlocked == true or GlobalVars.level2_completed == true:
 		#%Level_2.modulate = Color(0, 255, 0 ,255)
 		input_code.text = GlobalVars.level2_code
 	else:
@@ -67,7 +67,7 @@ func _on_level_2_pressed() -> void:
 
 func _on_level_3_pressed() -> void:
 	$Button_Pressed_Sound.playing = true
-	if GlobalVars.level3_unlocked == true:
+	if GlobalVars.level3_unlocked == true or GlobalVars.level3_completed == true:
 		#%Level_3.modulate = Color(0, 255, 0 ,255)
 		input_code.text = GlobalVars.level3_code
 	else:
@@ -76,7 +76,7 @@ func _on_level_3_pressed() -> void:
 
 func _on_level_4_pressed() -> void:
 	$Button_Pressed_Sound.playing = true
-	if GlobalVars.level4_unlocked == true:
+	if GlobalVars.level4_unlocked == true or GlobalVars.level4_completed == true:
 		#%Level_3.modulate = Color(0, 255, 0 ,255)
 		input_code.text = GlobalVars.level4_code
 	else:
@@ -85,7 +85,7 @@ func _on_level_4_pressed() -> void:
 
 func _on_level_5_pressed() -> void:
 	$Button_Pressed_Sound.playing = true
-	if GlobalVars.level5_unlocked == true:
+	if GlobalVars.level5_unlocked == true or GlobalVars.level5_completed == true:
 		#%Level_3.modulate = Color(0, 255, 0 ,255)
 		input_code.text = GlobalVars.level5_code
 	else:

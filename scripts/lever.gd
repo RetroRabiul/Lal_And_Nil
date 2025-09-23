@@ -19,6 +19,7 @@ func lever_state(state):
 	if state :
 		if can_pull:
 			can_pull = false
+			$Audio.playing = true
 			#%lever.animation = "on"
 			#await get_tree().create_timer(0.5).timeout
 			_lever_movement("on")

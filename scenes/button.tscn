@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdujcqusfxhgf"]
+[gd_scene load_steps=10 format=3 uid="uid://bdujcqusfxhgf"]
 
 [ext_resource type="Script" uid="uid://d14bh6edeoc8q" path="res://scripts/button.gd" id="1_rhj8v"]
 [ext_resource type="Texture2D" uid="uid://doj8hhpwdsfyq" path="res://assets/buttons/button1.png" id="2_p056l"]
 [ext_resource type="Texture2D" uid="uid://df2lpbichec1d" path="res://assets/buttons/button2.png" id="3_nyvjv"]
 [ext_resource type="Texture2D" uid="uid://b5e5mkbuabh2c" path="res://assets/buttons/button3.png" id="4_bcsn1"]
 [ext_resource type="Texture2D" uid="uid://n1r4v1cbee8s" path="res://assets/buttons/button4.png" id="5_c43ut"]
+[ext_resource type="AudioStream" uid="uid://cjopom130hwci" path="res://assets/Audio/Button.wav" id="6_8m7bo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wb4aj"]
 animations = [{
@@ -23,7 +24,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"pressed",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -40,7 +41,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"relessed",
-"speed": 5.0
+"speed": 20.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1bdt2"]
@@ -73,6 +74,10 @@ collision_mask = 7
 position = Vector2(0, 3.33333)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_8m7bo")
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8m7bo")
+pitch_scale = 0.5
 
 [connection signal="body_entered" from="ButtonArea" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="ButtonArea" to="." method="_on_area_2d_body_exited"]

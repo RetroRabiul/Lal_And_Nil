@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://c2efrm0qdwp8p"]
+[gd_scene load_steps=19 format=4 uid="uid://c2efrm0qdwp8p"]
 
 [ext_resource type="Script" uid="uid://d0ek3b4afx2tk" path="res://scripts/level.gd" id="1_5217h"]
 [ext_resource type="Texture2D" uid="uid://ci3u5yik8t7qr" path="res://assets/tile.png" id="2_bkm8u"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b4vbpkgaf2om0" path="res://scenes/player2.tscn" id="11_fwkwp"]
 [ext_resource type="PackedScene" uid="uid://dct51k1gqgc00" path="res://scenes/lever.tscn" id="13_diaav"]
 [ext_resource type="PackedScene" uid="uid://b2k7okcmai5rb" path="res://scenes/ui.tscn" id="13_ng57f"]
+[ext_resource type="AudioStream" uid="uid://udhineu2jm34" path="res://assets/Audio/bgm_11.wav" id="14_w46u2"]
 [ext_resource type="PackedScene" uid="uid://dt5wsr2twr5gc" path="res://scenes/wall.tscn" id="14_xtno6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7gny6"]
@@ -53,7 +54,7 @@ sources/1 = SubResource("TileSetAtlasSource_4nkto")
 sources/0 = SubResource("TileSetAtlasSource_7gny6")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2y5yt"]
-size = Vector2(2852, 20)
+size = Vector2(4392, 42)
 
 [node name="Mind_The_Gap" type="Node2D"]
 script = ExtResource("1_5217h")
@@ -98,7 +99,7 @@ linked_objects = [NodePath("../Floating_platform2")]
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death_Area"]
-position = Vector2(928, 1434)
+position = Vector2(928, 1338)
 shape = SubResource("RectangleShape2D_2y5yt")
 
 [node name="Door" parent="." instance=ExtResource("8_npudm")]
@@ -139,5 +140,10 @@ state = 2
 [node name="wall2" parent="." instance=ExtResource("14_xtno6")]
 position = Vector2(328, 544)
 state = 1
+
+[node name="BgAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_w46u2")
+pitch_scale = 0.8
+autoplay = true
 
 [connection signal="body_entered" from="Death_Area" to="." method="_on_death_area_body_entered"]

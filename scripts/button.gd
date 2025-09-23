@@ -13,6 +13,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _use_linked_object():
 	if !pressed:
+		$Audio.playing = true
 		%ButtonAnimation.play("pressed")
 		pressed = true
 		for object in linked_objects:

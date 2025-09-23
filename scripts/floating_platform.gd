@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends AnimatableBody2D
 
 @export var move_to = Vector2.ZERO
 @export var move_time = 3.0

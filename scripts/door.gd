@@ -59,7 +59,12 @@ func _check_level():
 		print("Level5 " + str(GlobalVars.level5_unlocked))
 		call_deferred("_change_scene")
 		
-	
+	elif next_level == 6:
+		GlobalVars.level5_completed = true
+		get_tree().change_scene_to_file("res://scenes/the_end.tscn")
+		#GlobalVars.level5_unlocked = true
+		#print("Level5 " + str(GlobalVars.level5_unlocked))
+		#call_deferred("_change_scene")
 	
 
 func _change_scene():
@@ -73,5 +78,7 @@ func _change_scene():
 		get_tree().change_scene_to_file("res://scenes/Almost_Made_It.tscn")
 		
 	elif next_level == 5:
-		get_tree().change_scene_to_file("res://scenes/level_5.tscn")
+		get_tree().change_scene_to_file("res://scenes/One_Step_Away.tscn")
 		
+	#elif  next_level == 6:
+		#get_tree().change_scene_to_file("res://scenes/the_end.tscn")

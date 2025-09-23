@@ -8,7 +8,7 @@ var level1_code = "l385"
 var level2_code = "l414"
 var level3_code = "l433"
 var level4_code = "l642"
-var level5_code = "l5"
+var level5_code = "l345"
 
 var level2_unlocked = false
 var level3_unlocked = false

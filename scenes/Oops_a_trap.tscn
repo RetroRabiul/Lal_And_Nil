@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://c0g3xdfdhmjrk"]
+[gd_scene load_steps=18 format=4 uid="uid://c0g3xdfdhmjrk"]
 
 [ext_resource type="Script" uid="uid://d0ek3b4afx2tk" path="res://scripts/level.gd" id="1_elyak"]
 [ext_resource type="Texture2D" uid="uid://ci3u5yik8t7qr" path="res://assets/tile.png" id="2_rycab"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dct51k1gqgc00" path="res://scenes/lever.tscn" id="11_i71m5"]
 [ext_resource type="PackedScene" uid="uid://djh8aflvryp06" path="res://scenes/trap.tscn" id="12_rycab"]
 [ext_resource type="PackedScene" uid="uid://bdujcqusfxhgf" path="res://scenes/button.tscn" id="13_3lhvq"]
+[ext_resource type="AudioStream" uid="uid://udhineu2jm34" path="res://assets/Audio/bgm_11.wav" id="13_7tt70"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7gny6"]
 texture = ExtResource("2_rycab")
@@ -52,7 +53,7 @@ sources/1 = SubResource("TileSetAtlasSource_4nkto")
 sources/0 = SubResource("TileSetAtlasSource_7gny6")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2y5yt"]
-size = Vector2(2678, 20)
+size = Vector2(4836, 54)
 
 [node name="Oops_A_Trap" type="Node2D"]
 script = ExtResource("1_elyak")
@@ -80,7 +81,7 @@ move_to = Vector2(0, 200)
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death_Area"]
-position = Vector2(928, 1434)
+position = Vector2(928, 1338)
 shape = SubResource("RectangleShape2D_2y5yt")
 
 [node name="Door" parent="." instance=ExtResource("6_lqdn8")]
@@ -117,5 +118,10 @@ linked_objects = [NodePath("../Trap2")]
 [node name="button" parent="." node_paths=PackedStringArray("linked_objects") instance=ExtResource("13_3lhvq")]
 position = Vector2(469, 310)
 linked_objects = [NodePath("../Floating_platform")]
+
+[node name="BgAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_7tt70")
+pitch_scale = 0.8
+autoplay = true
 
 [connection signal="body_entered" from="Death_Area" to="." method="_on_death_area_body_entered"]

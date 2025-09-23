@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dct51k1gqgc00"]
+[gd_scene load_steps=8 format=3 uid="uid://dct51k1gqgc00"]
 
 [ext_resource type="Script" uid="uid://c3lycqgvi8a6r" path="res://scripts/lever.gd" id="1_8di2w"]
 [ext_resource type="Texture2D" uid="uid://dedwn0ba72hav" path="res://assets/lever/lever3.png" id="1_qxmkn"]
 [ext_resource type="Texture2D" uid="uid://dhtk62d2jrq86" path="res://assets/lever/lever1.png" id="2_8di2w"]
 [ext_resource type="Texture2D" uid="uid://dkkpsvj6whgyy" path="res://assets/lever/lever2.png" id="3_dkrws"]
+[ext_resource type="AudioStream" uid="uid://cjopom130hwci" path="res://assets/Audio/Button.wav" id="5_dkrws"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_efr3d"]
 animations = [{
@@ -51,3 +52,7 @@ animation = &"off"
 [node name="leverCollisionShape" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_3flmr")
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dkrws")
+pitch_scale = 1.3

@@ -4,17 +4,17 @@
 [ext_resource type="FontFile" uid="uid://k0lb3q5pibgv" path="res://assets/fonts/Comfortaa/static/Comfortaa-Bold.ttf" id="1_yqeox"]
 [ext_resource type="AudioStream" uid="uid://cjopom130hwci" path="res://assets/Audio/Button.wav" id="3_con2f"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ytvr"]
-bg_color = Color(0.0235294, 0.6, 0.0941176, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjb58"]
-bg_color = Color(0, 0.792157, 0.839216, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_con2f"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhnvy"]
 bg_color = Color(0, 0.485579, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_con2f"]
-bg_color = Color(0, 0, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjb58"]
+bg_color = Color(0, 0.792157, 0.839216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ytvr"]
+bg_color = Color(0.0235294, 0.6, 0.0941176, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3eks"]
 bg_color = Color(0.108721, 0.108721, 0.108721, 1)
@@ -76,10 +76,10 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0, 0.509804, 1)
 theme_override_fonts/font = ExtResource("1_yqeox")
 theme_override_font_sizes/font_size = 50
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_4ytvr")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vjb58")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_mhnvy")
 theme_override_styles/normal = SubResource("StyleBoxFlat_con2f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mhnvy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vjb58")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_4ytvr")
 text = "1. One Platform Short "
 alignment = 0
 
@@ -89,10 +89,10 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0, 0.509804, 1)
 theme_override_fonts/font = ExtResource("1_yqeox")
 theme_override_font_sizes/font_size = 50
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_4ytvr")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vjb58")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_mhnvy")
 theme_override_styles/normal = SubResource("StyleBoxFlat_con2f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mhnvy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vjb58")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_4ytvr")
 text = "2. Opps a Trap"
 alignment = 0
 
@@ -102,10 +102,10 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0, 0.509804, 1)
 theme_override_fonts/font = ExtResource("1_yqeox")
 theme_override_font_sizes/font_size = 50
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_4ytvr")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vjb58")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_mhnvy")
 theme_override_styles/normal = SubResource("StyleBoxFlat_con2f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mhnvy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vjb58")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_4ytvr")
 text = "3. Mind The Gap
 "
 alignment = 0
@@ -116,10 +116,10 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0, 0.509804, 1)
 theme_override_fonts/font = ExtResource("1_yqeox")
 theme_override_font_sizes/font_size = 50
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_4ytvr")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vjb58")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_mhnvy")
 theme_override_styles/normal = SubResource("StyleBoxFlat_con2f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mhnvy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vjb58")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_4ytvr")
 text = "4. Almost Made It"
 alignment = 0
 
@@ -129,11 +129,11 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0, 0.509804, 1)
 theme_override_fonts/font = ExtResource("1_yqeox")
 theme_override_font_sizes/font_size = 50
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_4ytvr")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vjb58")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_mhnvy")
 theme_override_styles/normal = SubResource("StyleBoxFlat_con2f")
-text = "5. Level 5"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mhnvy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vjb58")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_4ytvr")
+text = "5. One Step Away"
 alignment = 0
 
 [node name="ColorRect" type="Panel" parent="ColorRect"]

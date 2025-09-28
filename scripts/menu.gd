@@ -2,6 +2,8 @@ extends Control
 
 @onready var input_code = %LevelCode
 
+#@onready var my_button :  Button = %PlayButton
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#%PlayButton.disabled = true
@@ -22,11 +24,18 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("play"):
+		_on_button_pressed()
+		#my_button.button_pressed = true
+
+
 func _on_button_pressed() -> void:
 		_change_scene()
 
 func _on_level_code_text_changed() -> void:
-	if input_code.text.length() > 1:
+	if input_code.text.length() > 6:
+		input_code.text = ""
 		#show press play
 		#%PlayButton.disabled = false
 		print(%LevelCode.text)

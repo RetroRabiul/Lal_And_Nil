@@ -1,13 +1,34 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4vbpkgaf2om0"]
+[gd_scene load_steps=12 format=3 uid="uid://b4vbpkgaf2om0"]
 
 [ext_resource type="Script" uid="uid://i7n3n7pwcg57" path="res://scripts/player_2.gd" id="1_agjl5"]
+[ext_resource type="Texture2D" uid="uid://dnap82fo2ybc5" path="res://assets/Player_Celebrating/player_celebrating1.png" id="2_24gv0"]
 [ext_resource type="Texture2D" uid="uid://wrd4c5lyt7lm" path="res://assets/player1/Player_walking1.png" id="2_hb4is"]
+[ext_resource type="Texture2D" uid="uid://dd56ays5dtnbd" path="res://assets/Player_Celebrating/player_celebrating2.png" id="3_dauvq"]
 [ext_resource type="Texture2D" uid="uid://4kf5ypmjodiv" path="res://assets/player1/Player_walking2.png" id="3_gmtae"]
+[ext_resource type="Texture2D" uid="uid://crx1deev3cjn2" path="res://assets/Player_Celebrating/player_celebrating3.png" id="4_7f0u4"]
 [ext_resource type="Texture2D" uid="uid://doxs7tfh4wyr2" path="res://assets/player1/Player_walking3.png" id="4_8l1to"]
 [ext_resource type="Texture2D" uid="uid://b7w2vkf2lmx56" path="res://assets/player1/Player_walking4.png" id="5_3ejgl"]
+[ext_resource type="Texture2D" uid="uid://dima4s0v1qm5m" path="res://assets/Player_Celebrating/player_celebrating4.png" id="5_ftkcl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_24gv0"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_24gv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dauvq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7f0u4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ftkcl")
+}],
+"loop": true,
+"name": &"celebrating",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_hb4is")
@@ -48,7 +69,7 @@ script = ExtResource("1_agjl5")
 modulate = Color(0, 0.498039, 0.498039, 1)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_24gv0")
-animation = &"walk"
+animation = &"celebrating"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)

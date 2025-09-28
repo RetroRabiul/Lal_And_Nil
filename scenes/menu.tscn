@@ -166,7 +166,7 @@ theme_override_fonts/font = ExtResource("1_yqeox")
 theme_override_font_sizes/font_size = 50
 text = "Level Code :"
 
-[node name="LevelCode" type="TextEdit" parent="ColorRect/ColorRect"]
+[node name="LevelCode" type="LineEdit" parent="ColorRect/ColorRect"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -201,6 +201,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_yqeox")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_v86rl")
+action_mode = 0
 text = "PLAY"
 
 [node name="Button_Pressed_Sound" type="AudioStreamPlayer" parent="."]

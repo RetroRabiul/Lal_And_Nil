@@ -1,19 +1,64 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbs2w83vq001e"]
+[gd_scene load_steps=12 format=3 uid="uid://bbs2w83vq001e"]
 
-[ext_resource type="Texture2D" uid="uid://b68qoeut6n1c7" path="res://assets/door.png" id="1_hpvv5"]
 [ext_resource type="Script" uid="uid://bom1ylyk187nm" path="res://scripts/door.gd" id="1_uvdjg"]
+[ext_resource type="Texture2D" uid="uid://dlneh5c1x5ui4" path="res://assets/door_animation/door1.png" id="2_kgbum"]
 [ext_resource type="FontFile" uid="uid://k0lb3q5pibgv" path="res://assets/fonts/Comfortaa/static/Comfortaa-Bold.ttf" id="3_83dcw"]
+[ext_resource type="Texture2D" uid="uid://o35u4lpygsak" path="res://assets/door_animation/door2.png" id="3_pg2b6"]
+[ext_resource type="Texture2D" uid="uid://cax7wgotcb1ik" path="res://assets/door_animation/door3.png" id="4_ey00f"]
+[ext_resource type="Texture2D" uid="uid://brdvq05nn65c" path="res://assets/door_animation/door4.png" id="5_4ayau"]
+[ext_resource type="Texture2D" uid="uid://4xtg37bpogaf" path="res://assets/door_animation/door5.png" id="6_41c0y"]
+[ext_resource type="Texture2D" uid="uid://dko35sxs3snkw" path="res://assets/door_animation/door6.png" id="7_j2w5t"]
+[ext_resource type="Texture2D" uid="uid://dwcc3unsqplks" path="res://assets/door_animation/door7.png" id="8_ykb3b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ali40"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kgbum")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kgbum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pg2b6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ey00f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4ayau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_41c0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j2w5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ykb3b")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpvv5"]
 size = Vector2(114, 152)
 
-[node name="Door" type="Area2D"]
+[node name="Door" type="Area2D" groups=["door"]]
 collision_mask = 7
 script = ExtResource("1_uvdjg")
 
-[node name="Door" type="Sprite2D" parent="."]
+[node name="DoorAnim" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
-texture = ExtResource("1_hpvv5")
+sprite_frames = SubResource("SpriteFrames_ali40")
+animation = &"open"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -31,7 +76,6 @@ theme_override_fonts/font = ExtResource("3_83dcw")
 theme_override_font_sizes/font_size = 32
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

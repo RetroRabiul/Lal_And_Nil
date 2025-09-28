@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 # Define wall states
-enum WallState { NORMAL, GREEN, BLUE }
+enum WallState { NORMAL, RED, BLUE }
 
 # Export state so you can set it in the inspector
 @export var state: WallState = WallState.NORMAL : set = set_state
@@ -17,10 +17,10 @@ func set_state(new_state: WallState) -> void:
 			collision_layer = 1 << 5 #6
 			collision_mask = 1 << 1 | 1 << 2  # both players
 			%wallmesh.modulate = Color(0.353, 0.494, 0.651)
-		WallState.GREEN:
+		WallState.RED:
 			collision_layer = 1 << 6 #7
 			collision_mask = 1 << 1      # only green collides
-			%wallmesh.modulate = Color(0.11, 0.502, 0.11)
+			%wallmesh.modulate = Color(0.502, 0.11, 0.11, 1.0)
 		WallState.BLUE:
 			collision_layer = 1 << 7 #8
 			collision_mask = 1 << 2      # only blue collides
@@ -50,8 +50,8 @@ func can_player_pass(player_color: String) -> bool:
 	match state:
 		WallState.NORMAL:
 			return false  # nobody can pass
-		WallState.GREEN:
-			return player_color == "green"
+		WallState.RED:
+			return player_color == "red"
 		WallState.BLUE:
 			return player_color == "blue"
 	return false

@@ -9,12 +9,21 @@ var gravity = 50
 var array = []
 var face_in_this_direction
 
+
+var can_move = true
 @export var power_scale : float = 1.5
 
 
 func _ready() -> void:
+	can_move = true
 	GlobalSignal.connect("powerup", _power_achieved)
+	GlobalSignal.connect("player_celebrating", _celebrating)
 
+
+func _celebrating(person):
+	if person == "player2":
+		$PlayerAnimation.play("celebrating")
+		can_move = false
 
 func _power_achieved(owner, power):
 	if owner == "player2" :
@@ -75,20 +84,20 @@ func _physics_process(delta: float) -> void:
 	else:
 		face_in_this_direction = "stop"
 	
-	
-	match face_in_this_direction:
-		"p2_left":
-			direction.x -= speed
-			$PlayerAnimation.play("walk")
-			$PlayerAnimation.flip_h = true
-		
-		"p2_right":
-			direction.x += speed
-			$PlayerAnimation.play("walk")
-			$PlayerAnimation.flip_h = false
-		
-		"stop":
-			$PlayerAnimation.play("idle")
+	if can_move :
+		match face_in_this_direction:
+			"p2_left":
+				direction.x -= speed
+				$PlayerAnimation.play("walk")
+				$PlayerAnimation.flip_h = true
+			
+			"p2_right":
+				direction.x += speed
+				$PlayerAnimation.play("walk")
+				$PlayerAnimation.flip_h = false
+			
+			"stop":
+				$PlayerAnimation.play("idle")
 	
 	
 	

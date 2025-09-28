@@ -1,18 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2k7okcmai5rb"]
+[gd_scene load_steps=6 format=3 uid="uid://b2k7okcmai5rb"]
 
 [ext_resource type="FontFile" uid="uid://k0lb3q5pibgv" path="res://assets/fonts/Comfortaa/static/Comfortaa-Bold.ttf" id="1_nt7q6"]
 [ext_resource type="Script" uid="uid://dmaxx4p1v5otq" path="res://scripts/ui.gd" id="1_x4jx1"]
 [ext_resource type="Texture2D" uid="uid://csfvop0laqwnf" path="res://assets/restart-icon.png" id="2_gdt2y"]
+[ext_resource type="Texture2D" uid="uid://f1r1rlf7ldqs" path="res://assets/home_icon.png" id="3_wm3ai"]
 [ext_resource type="Texture2D" uid="uid://d1v151fyxqux" path="res://assets/key.png" id="3_yev5y"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_x4jx1")
 
 [node name="Restart" type="Button" parent="."]
-modulate = Color(0, 1, 0.2901961, 0.43529412)
-offset_right = 136.0
+modulate = Color(0, 1, 0.2901961, 1)
+offset_left = 136.0
+offset_right = 272.0
 offset_bottom = 136.0
 icon = ExtResource("2_gdt2y")
+
+[node name="Menu" type="Button" parent="."]
+modulate = Color(0, 1, 0.2901961, 1)
+offset_right = 136.0
+offset_bottom = 136.0
+icon = ExtResource("3_wm3ai")
 
 [node name="key_collected" type="Control" parent="."]
 layout_mode = 3
@@ -79,5 +87,6 @@ theme_override_fonts/font = ExtResource("1_nt7q6")
 theme_override_font_sizes/font_size = 100
 text = "Menu"
 
-[connection signal="pressed" from="Restart" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="menu/MenuButton" to="." method="_on_menu_button_pressed"]

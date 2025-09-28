@@ -115,13 +115,13 @@ position = Vector2(1824, 320)
 next_level = 2
 
 [node name="key" parent="." instance=ExtResource("9_ishhe")]
-position = Vector2(332, 335)
+position = Vector2(1390, 290)
 
 [node name="player_1" parent="." instance=ExtResource("10_gnwwf")]
-position = Vector2(98, 159)
+position = Vector2(1156, 299)
 
 [node name="player_2" parent="." instance=ExtResource("11_vorqn")]
-position = Vector2(165, 147)
+position = Vector2(1223, 287)
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(0, 575)

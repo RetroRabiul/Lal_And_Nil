@@ -4,10 +4,15 @@ extends Area2D
 
 var key_owner
 var other_player
+var opened = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	%DoorAnim.play("idle")
 	GlobalSignal.connect("key_owner", _key_owner)
-	%Label.hide()
+	%Label.text = "Locked"
+	%Label.show()
+	print("Locked")
 
 
 func _key_owner(owner, follower):
@@ -19,17 +24,17 @@ func _key_owner(owner, follower):
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group(str(key_owner)):
+		GlobalSignal.player_celebrating.emit(key_owner)
 		if GlobalVars.key == true:
+			opened = true
+			%DoorAnim.play("open")
 			%Label.text = "Opened"
 			%Label.show()
 			
-		else:
-			%Label.text = "Locked"
-			%Label.show()
-			print("Locked")
-			return
-	if body.is_in_group(str(other_player)) and GlobalVars.key == true:
-		$Timer.start()
+	if  body.is_in_group(str(other_player)) and opened == true:
+		GlobalSignal.player_celebrating.emit(other_player)
+		print("player Celebrating")
+		#$Timer.start()wda
 
 func _on_timer_timeout() -> void:
 	call_deferred("_check_level")
@@ -60,7 +65,9 @@ func _check_level():
 		call_deferred("_change_scene")
 		
 	elif next_level == 6:
+		print("level5_completed")
 		GlobalVars.level5_completed = true
+		print("The end")
 		get_tree().change_scene_to_file("res://scenes/the_end.tscn")
 		#GlobalVars.level5_unlocked = true
 		#print("Level5 " + str(GlobalVars.level5_unlocked))

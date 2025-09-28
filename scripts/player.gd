@@ -9,12 +9,20 @@ var gravity = 50
 var array = []
 var face_in_this_direction
 
+var can_move = true
 @export var power_scale : float = 1.5
 
 
 func _ready() -> void:
+	can_move = true
 	GlobalSignal.connect("powerup", _power_achieved)
+	GlobalSignal.connect("player_celebrating", _celebrating)
 
+
+func _celebrating(person):
+	if person == "player1":
+		$PlayerAnimation.play("celebrating")
+		can_move = false
 
 func _power_achieved(owner, power):
 	if owner == "player1" :
@@ -78,20 +86,20 @@ func _physics_process(delta: float) -> void:
 	else:
 		face_in_this_direction = "stop"
 	
-	
-	match face_in_this_direction:
-		"p1_left":
-			direction.x -= speed
-			$PlayerAnimation.play("walk")
-			$PlayerAnimation.flip_h = true
-		
-		"p1_right":
-			direction.x += speed
-			$PlayerAnimation.play("walk")
-			$PlayerAnimation.flip_h = false
-		
-		"stop":
-			$PlayerAnimation.play("idle")
+	if can_move :
+		match face_in_this_direction:
+			"p1_left":
+				direction.x -= speed
+				$PlayerAnimation.play("walk")
+				$PlayerAnimation.flip_h = true
+			
+			"p1_right":
+				direction.x += speed
+				$PlayerAnimation.play("walk")
+				$PlayerAnimation.flip_h = false
+			
+			"stop":
+				$PlayerAnimation.play("idle")
 	
 	#for body in get_overlapping_bodies():
 		#if body is StaticBody2D and body.has_variable("state"):

@@ -1,13 +1,34 @@
-[gd_scene load_steps=8 format=3 uid="uid://6vgh3nl5ugj"]
+[gd_scene load_steps=12 format=3 uid="uid://6vgh3nl5ugj"]
 
 [ext_resource type="Script" uid="uid://biiud6cmvf7tk" path="res://scripts/player.gd" id="1_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://dnap82fo2ybc5" path="res://assets/Player_Celebrating/player_celebrating1.png" id="2_38edh"]
 [ext_resource type="Texture2D" uid="uid://wrd4c5lyt7lm" path="res://assets/player1/Player_walking1.png" id="3_dcfem"]
+[ext_resource type="Texture2D" uid="uid://dd56ays5dtnbd" path="res://assets/Player_Celebrating/player_celebrating2.png" id="3_euhpk"]
 [ext_resource type="Texture2D" uid="uid://4kf5ypmjodiv" path="res://assets/player1/Player_walking2.png" id="4_snghq"]
+[ext_resource type="Texture2D" uid="uid://crx1deev3cjn2" path="res://assets/Player_Celebrating/player_celebrating3.png" id="4_x5ced"]
+[ext_resource type="Texture2D" uid="uid://dima4s0v1qm5m" path="res://assets/Player_Celebrating/player_celebrating4.png" id="5_16ml7"]
 [ext_resource type="Texture2D" uid="uid://doxs7tfh4wyr2" path="res://assets/player1/Player_walking3.png" id="5_sd87i"]
 [ext_resource type="Texture2D" uid="uid://b7w2vkf2lmx56" path="res://assets/player1/Player_walking4.png" id="6_38edh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dqkch"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_38edh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_euhpk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x5ced")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_16ml7")
+}],
+"loop": true,
+"name": &"celebrating",
+"speed": 2.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_dcfem")
@@ -44,13 +65,12 @@ collision_layer = 2
 collision_mask = 185
 script = ExtResource("1_qhqgy")
 
-[node name="PlayerAnimation" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.109804, 0.501961, 0.109804, 1)
+[node name="PlayerAnimation" type="AnimatedSprite2D" parent="." groups=["player1"]]
+modulate = Color(0.5019608, 0.10980392, 0.10980392, 1)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_dqkch")
-animation = &"walk"
-frame = 2
-frame_progress = 0.671558
+animation = &"celebrating"
+frame_progress = 0.97222084
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)

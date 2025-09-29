@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckep20ejn47yq"]
+[gd_scene load_steps=11 format=3 uid="uid://ckep20ejn47yq"]
 
 [ext_resource type="Script" uid="uid://wj3ccsphlwvt" path="res://scripts/the_end.gd" id="1_2x4e2"]
 [ext_resource type="FontFile" uid="uid://k0lb3q5pibgv" path="res://assets/fonts/Comfortaa/static/Comfortaa-Bold.ttf" id="1_a842l"]
+[ext_resource type="Texture2D" uid="uid://dwcc3unsqplks" path="res://assets/door_animation/door7.png" id="2_pugnu"]
+[ext_resource type="PackedScene" uid="uid://6vgh3nl5ugj" path="res://scenes/player1.tscn" id="3_2jfs8"]
+[ext_resource type="PackedScene" uid="uid://b4vbpkgaf2om0" path="res://scenes/player2.tscn" id="4_fpimk"]
+[ext_resource type="Script" uid="uid://d241100qn462m" path="res://scripts/camera.gd" id="5_fpimk"]
+[ext_resource type="AudioStream" uid="uid://c7x22qtu15g5w" path="res://assets/Audio/bgm_8.wav" id="7_fhtex"]
+[ext_resource type="Texture2D" uid="uid://8jfg01fdf455" path="res://assets/lal_nil.png" id="8_hdc6s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jfs8"]
+size = Vector2(664, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhtex"]
+size = Vector2(534, 76)
 
 [node name="TheEnd" type="Control"]
 layout_mode = 3
@@ -19,20 +31,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.290196, 0, 1)
+color = Color(0, 0.0627451, 0, 1)
+
+[node name="Door" type="Sprite2D" parent="."]
+position = Vector2(262, 434)
+scale = Vector2(3, 3)
+texture = ExtResource("2_pugnu")
 
 [node name="Label" type="Label" parent="."]
+modulate = Color(0, 0.5529412, 0, 1)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -582.0
-offset_top = -240.0
-offset_right = 582.0
-offset_bottom = -16.0
-grow_horizontal = 2
+offset_left = -1204.0
+offset_top = -162.0
+offset_right = -40.0
+offset_bottom = 62.0
+grow_horizontal = 0
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_a842l")
 theme_override_font_sizes/font_size = 200
@@ -41,19 +59,66 @@ text = "Game Over"
 [node name="MenuButton" type="Button" parent="."]
 modulate = Color(0, 1, 0.290196, 1)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -205.0
-offset_top = 20.0
-offset_right = 205.0
-offset_bottom = 141.0
-grow_horizontal = 2
+offset_left = -785.0
+offset_top = 128.0
+offset_right = -375.0
+offset_bottom = 249.0
+grow_horizontal = 0
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_a842l")
 theme_override_font_sizes/font_size = 100
 text = "Menu"
 
+[node name="player_1" parent="." instance=ExtResource("3_2jfs8")]
+position = Vector2(140.00003, 711)
+scale = Vector2(10, 10)
+can_move = false
+state = 1
+
+[node name="player_2" parent="." instance=ExtResource("4_fpimk")]
+position = Vector2(570.00006, 873.00006)
+scale = Vector2(15, 15)
+can_move = false
+state = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(565, 1403)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_2jfs8")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(136, 1070)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_fhtex")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 542)
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
+script = ExtResource("5_fpimk")
+player1 = NodePath("../player_1")
+player2 = NodePath("../player_2")
+shake_strength = 7.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_fhtex")
+autoplay = true
+
+[node name="LalNil" type="Sprite2D" parent="."]
+position = Vector2(1315, 186)
+scale = Vector2(2.9999998, 3)
+texture = ExtResource("8_hdc6s")
+
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

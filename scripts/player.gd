@@ -9,16 +9,27 @@ var gravity = 50
 var array = []
 var face_in_this_direction
 
-var can_move = true
+@export var can_move = true
 @export var power_scale : float = 1.5
+
+enum PlayerState { IDLE, CELEBRATING }
+@export var state: PlayerState = PlayerState.IDLE : set = set_state
 
 
 func _ready() -> void:
-	can_move = true
+	set_state(state)
 	GlobalSignal.powerup.connect(_power_achieved)
 	GlobalSignal.player_celebrating.connect(_celebrating)
 	#GlobalSignal.connect("powerup", _power_achieved)
 	#GlobalSignal.connect("player_celebrating", _celebrating)
+
+func set_state(new_state: PlayerState) -> void:
+	state = new_state
+	match state:
+		PlayerState.IDLE:
+			$PlayerAnimation.play("idle")
+		PlayerState.CELEBRATING:
+			$PlayerAnimation.play("celebrating")
 
 
 func _celebrating(person):

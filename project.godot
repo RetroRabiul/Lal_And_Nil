@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Robo"
+config/name="Lal&Nil"
 run/main_scene="uid://br0j444m4p7gx"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -30,6 +30,8 @@ window/stretch/mode="viewport"
 [global_group]
 
 door=""
+player1=""
+player2=""
 
 [input]
 

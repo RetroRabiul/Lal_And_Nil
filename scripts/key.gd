@@ -5,6 +5,10 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player1"):
 		$Collected_Sound.playing = true
+		# Trigger camera shake
+		var camera = get_viewport().get_camera_2d()
+		if camera and camera.has_method("shake"):
+			camera.shake()
 		await get_tree().create_timer(0.1).timeout
 		#await($Collected_Sound)
 		GlobalVars.key = true
@@ -14,6 +18,10 @@ func _on_body_entered(body: Node2D) -> void:
 		queue_free()
 	if body.is_in_group("player2"):
 		$Collected_Sound.playing = true
+		# Trigger camera shake
+		var camera = get_viewport().get_camera_2d()
+		if camera and camera.has_method("shake"):
+			camera.shake()
 		await get_tree().create_timer(0.1).timeout
 		#await($Collected_Sound)
 		GlobalVars.key = true

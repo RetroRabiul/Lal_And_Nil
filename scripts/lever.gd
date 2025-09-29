@@ -20,6 +20,10 @@ func lever_state(state):
 		if can_pull:
 			can_pull = false
 			$Audio.playing = true
+			# Trigger camera shake
+			var camera = get_viewport().get_camera_2d()
+			if camera and camera.has_method("shake"):
+				camera.shake()
 			#%lever.animation = "on"
 			#await get_tree().create_timer(0.5).timeout
 			_lever_movement("on")

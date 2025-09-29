@@ -15,8 +15,10 @@ var can_move = true
 
 func _ready() -> void:
 	can_move = true
-	GlobalSignal.connect("powerup", _power_achieved)
-	GlobalSignal.connect("player_celebrating", _celebrating)
+	GlobalSignal.powerup.connect(_power_achieved)
+	GlobalSignal.player_celebrating.connect(_celebrating)
+	#GlobalSignal.connect("powerup", _power_achieved)
+	#GlobalSignal.connect("player_celebrating", _celebrating)
 
 
 func _celebrating(person):

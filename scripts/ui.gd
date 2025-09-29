@@ -18,6 +18,10 @@ func _ready() -> void:
 func _input(event):
 	
 	if Input.is_action_just_pressed("restart"):
+		# Trigger camera shake
+		var camera = get_viewport().get_camera_2d()
+		if camera and camera.has_method("shake"):
+			camera.shake()
 		get_tree().reload_current_scene()
 	
 	

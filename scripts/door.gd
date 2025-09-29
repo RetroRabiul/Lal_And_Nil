@@ -5,6 +5,8 @@ extends Area2D
 var key_owner
 var other_player
 var opened = false
+var player_count = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,17 +26,36 @@ func _key_owner(owner, follower):
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group(str(key_owner)):
+		player_count += 1
+		print(player_count, key_owner)
 		GlobalSignal.player_celebrating.emit(key_owner)
 		if GlobalVars.key == true:
 			opened = true
 			%DoorAnim.play("open")
 			%Label.text = "Opened"
 			%Label.show()
-			
-	if  body.is_in_group(str(other_player)) and opened == true:
-		GlobalSignal.player_celebrating.emit(other_player)
-		print("player Celebrating")
-		#$Timer.start()wda
+			if player_count == 2:
+				$Timer.start()
+	if  body.is_in_group(str(other_player)):
+		player_count += 1
+		print(player_count, other_player)
+		if opened:
+			GlobalSignal.player_celebrating.emit(other_player)
+			print("player Celebrating")
+			#$Timer.start()
+		if player_count == 2:
+			$Timer.start()
+
+func _on_body_exited(body: Node2D) -> void:
+	if body.is_in_group(str(key_owner)):
+		player_count -= 1
+		print(player_count, key_owner)
+		
+	if  body.is_in_group(str(other_player)):
+		player_count -= 1
+		print(player_count, other_player)
+
+
 
 func _on_timer_timeout() -> void:
 	call_deferred("_check_level")

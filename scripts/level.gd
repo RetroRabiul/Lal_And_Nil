@@ -26,4 +26,8 @@ func _on_death_area_body_entered(body: Node2D) -> void:
 		#get_tree().reload_current_scene()
 
 func _level_reset():
+	# Trigger camera shake
+	var camera = get_viewport().get_camera_2d()
+	if camera and camera.has_method("shake"):
+		camera.shake()
 	get_tree().reload_current_scene()

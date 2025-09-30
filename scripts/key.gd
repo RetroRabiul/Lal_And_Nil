@@ -47,7 +47,7 @@ func _on_body_entered(body: Node2D) -> void:
 		_begin_moving()
 
 func _begin_moving():
-	target_pos = start_pos + move_to
+	target_pos = Vector2(1836.0, 84.0)
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", target_pos, move_time)
 	tween.tween_property(self, "scale", Vector2(2.5,2.5), move_time)

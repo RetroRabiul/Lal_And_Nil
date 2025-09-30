@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://c2efrm0qdwp8p"]
+[gd_scene load_steps=20 format=4 uid="uid://c2efrm0qdwp8p"]
 
 [ext_resource type="Script" uid="uid://d0ek3b4afx2tk" path="res://scripts/level.gd" id="1_5217h"]
 [ext_resource type="Texture2D" uid="uid://ci3u5yik8t7qr" path="res://assets/tile.png" id="2_bkm8u"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dkoofwptaed0x" path="res://scenes/key.tscn" id="9_p76dq"]
 [ext_resource type="PackedScene" uid="uid://6vgh3nl5ugj" path="res://scenes/player1.tscn" id="10_ouibg"]
 [ext_resource type="PackedScene" uid="uid://b4vbpkgaf2om0" path="res://scenes/player2.tscn" id="11_fwkwp"]
+[ext_resource type="Script" uid="uid://d241100qn462m" path="res://scripts/camera.gd" id="11_w46u2"]
 [ext_resource type="PackedScene" uid="uid://dct51k1gqgc00" path="res://scenes/lever.tscn" id="13_diaav"]
 [ext_resource type="PackedScene" uid="uid://b2k7okcmai5rb" path="res://scenes/ui.tscn" id="13_ng57f"]
 [ext_resource type="AudioStream" uid="uid://udhineu2jm34" path="res://assets/Audio/bgm_11.wav" id="14_w46u2"]
@@ -117,9 +118,13 @@ position = Vector2(165, 876)
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(0, 575)
-limit_left = -1
+limit_left = 0
+limit_top = 0
 limit_right = 1920
 limit_bottom = 1080
+script = ExtResource("11_w46u2")
+player1 = NodePath("../player_1")
+player2 = NodePath("../player_2")
 
 [node name="UI" parent="Camera" instance=ExtResource("13_ng57f")]
 unique_name_in_owner = true

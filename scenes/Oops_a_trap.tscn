@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://c0g3xdfdhmjrk"]
+[gd_scene load_steps=19 format=4 uid="uid://c0g3xdfdhmjrk"]
 
 [ext_resource type="Script" uid="uid://d0ek3b4afx2tk" path="res://scripts/level.gd" id="1_elyak"]
 [ext_resource type="Texture2D" uid="uid://ci3u5yik8t7qr" path="res://assets/tile.png" id="2_rycab"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dkoofwptaed0x" path="res://scenes/key.tscn" id="7_4s3d8"]
 [ext_resource type="PackedScene" uid="uid://6vgh3nl5ugj" path="res://scenes/player1.tscn" id="8_5bqd8"]
 [ext_resource type="PackedScene" uid="uid://b4vbpkgaf2om0" path="res://scenes/player2.tscn" id="9_l04ec"]
+[ext_resource type="Script" uid="uid://d241100qn462m" path="res://scripts/camera.gd" id="10_7tt70"]
 [ext_resource type="PackedScene" uid="uid://b2k7okcmai5rb" path="res://scenes/ui.tscn" id="10_xf8ln"]
 [ext_resource type="PackedScene" uid="uid://dct51k1gqgc00" path="res://scenes/lever.tscn" id="11_i71m5"]
 [ext_resource type="PackedScene" uid="uid://djh8aflvryp06" path="res://scenes/trap.tscn" id="12_rycab"]
@@ -99,9 +100,13 @@ position = Vector2(747, 892)
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(0, 575)
-limit_left = -1
+limit_left = 0
+limit_top = 0
 limit_right = 1920
 limit_bottom = 1080
+script = ExtResource("10_7tt70")
+player1 = NodePath("../player_1")
+player2 = NodePath("../player_2")
 
 [node name="UI" parent="Camera" instance=ExtResource("10_xf8ln")]
 unique_name_in_owner = true

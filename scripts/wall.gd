@@ -16,7 +16,7 @@ func set_state(new_state: WallState) -> void:
 		WallState.NORMAL:
 			collision_layer = 1 << 5 #6
 			collision_mask = 1 << 1 | 1 << 2  # both players
-			%wallmesh.modulate = Color(0.353, 0.494, 0.651)
+			%wallmesh.modulate = Color(0.353, 0.494, 0.651, 1.0)
 		WallState.RED:
 			collision_layer = 1 << 6 #7
 			collision_mask = 1 << 1      # only green collides

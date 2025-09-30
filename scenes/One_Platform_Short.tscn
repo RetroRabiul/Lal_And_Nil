@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://d0ne1fb2np8ws"]
+[gd_scene load_steps=17 format=4 uid="uid://d0ne1fb2np8ws"]
 
 [ext_resource type="Script" uid="uid://d0ek3b4afx2tk" path="res://scripts/level.gd" id="1_au5ll"]
 [ext_resource type="Texture2D" uid="uid://ci3u5yik8t7qr" path="res://assets/tile.png" id="2_cwosg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ctauhijiugu6s" path="res://scenes/floating_platform.tscn" id="4_3ch0d"]
 [ext_resource type="PackedScene" uid="uid://bbs2w83vq001e" path="res://scenes/door.tscn" id="8_qncm8"]
 [ext_resource type="PackedScene" uid="uid://dkoofwptaed0x" path="res://scenes/key.tscn" id="9_nspwt"]
+[ext_resource type="Script" uid="uid://d241100qn462m" path="res://scripts/camera.gd" id="9_utqce"]
 [ext_resource type="PackedScene" uid="uid://6vgh3nl5ugj" path="res://scenes/player1.tscn" id="10_ppifd"]
 [ext_resource type="PackedScene" uid="uid://b4vbpkgaf2om0" path="res://scenes/player2.tscn" id="11_affyx"]
 [ext_resource type="AudioStream" uid="uid://udhineu2jm34" path="res://assets/Audio/bgm_11.wav" id="11_d276d"]
@@ -86,6 +87,7 @@ next_level = 2
 
 [node name="key" parent="." instance=ExtResource("9_nspwt")]
 position = Vector2(1696, 302)
+move_to = Vector2(145, -221)
 
 [node name="player_1" parent="." instance=ExtResource("10_ppifd")]
 position = Vector2(225, 690)
@@ -95,9 +97,13 @@ position = Vector2(927, 304)
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(0, 575)
-limit_left = -1
+limit_left = 0
+limit_top = 0
 limit_right = 1920
 limit_bottom = 1080
+script = ExtResource("9_utqce")
+player1 = NodePath("../player_1")
+player2 = NodePath("../player_2")
 
 [node name="UI" parent="Camera" instance=ExtResource("13_lh5ws")]
 unique_name_in_owner = true

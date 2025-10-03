@@ -97,9 +97,10 @@ next_level = 6
 
 [node name="key" parent="." instance=ExtResource("6_gmht3")]
 position = Vector2(126, 460)
+move_speed = 1000
 
 [node name="player_1" parent="." instance=ExtResource("7_3yoqf")]
-position = Vector2(189, 174)
+position = Vector2(185, 195)
 
 [node name="player_2" parent="." instance=ExtResource("8_4em25")]
 position = Vector2(1625, 244)

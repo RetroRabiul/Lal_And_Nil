@@ -4,9 +4,29 @@ extends Control
 
 #@onready var my_button :  Button = %PlayButton
 
+var joy_on_image:CompressedTexture2D = preload("res://assets/control-select/joy_on.png")
+var joy_off_image:CompressedTexture2D = preload("res://assets/control-select/joy_off.png")
+var key_on_image:CompressedTexture2D = preload("res://assets/control-select/key_on.png")
+var key_off_image:CompressedTexture2D = preload("res://assets/control-select/key_off.png")
+
+var use_arrow_keys: CompressedTexture2D = preload("res://assets/arrow_keys.png")
+var use_wasd: CompressedTexture2D = preload("res://assets/wasd_keys.png")
+var use_joy: CompressedTexture2D = preload("res://assets/use_joy.png")
+var use_controller: CompressedTexture2D = preload("res://assets/use_controller.png")
+
+@export var use_joystick: bool = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GlobalVars.using_joystick = use_joystick
+	var pads = Input.get_connected_joypads()
+	for id in pads:
+		print("Found controller: ID=", id, " Name=", Input.get_joy_name(id))
 	#%PlayButton.disabled = true
+	if GlobalVars.using_joystick:
+		_on_joy_select_pressed()
+	else:
+		_on_key_select_pressed()
 	input_code.text = GlobalVars.level1_code
 	# Check if level 1 was completed
 	if GlobalVars.level1_completed:
@@ -99,3 +119,23 @@ func _on_level_5_pressed() -> void:
 		input_code.text = GlobalVars.level5_code
 	else:
 		input_code.text = ""
+
+
+func _on_joy_select_pressed() -> void:
+	GlobalVars.using_joystick = true
+	%JoySelect.texture_normal = joy_on_image
+	%KeySelect.texture_normal = key_off_image
+	
+	%Keys.texture = use_joy
+	%Arrows.texture = use_controller
+	
+
+
+
+func _on_key_select_pressed() -> void:
+	GlobalVars.using_joystick = false
+	%JoySelect.texture_normal = joy_off_image
+	%KeySelect.texture_normal = key_on_image
+	
+	%Keys.texture = use_wasd
+	%Arrows.texture = use_arrow_keys

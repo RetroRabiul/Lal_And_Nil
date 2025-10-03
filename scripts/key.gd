@@ -1,7 +1,8 @@
 extends Area2D
 
 @export var move_to = Vector2.ZERO
-@export var move_time = 0.5
+@export var move_speed = 350
+
 
 var start_pos = Vector2.ZERO
 var target_pos = Vector2.ZERO
@@ -9,8 +10,10 @@ var target_pos = Vector2.ZERO
 var going_up = false
 var direction = 1
 
+
+
 func _ready() -> void:
-	$Timer.wait_time = move_time
+	
 	start_pos = global_position
 
 
@@ -48,9 +51,13 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _begin_moving():
 	target_pos = Vector2(1836.0, 84.0)
+	var dist = global_position.distance_to(target_pos)
+	var move_time = dist/move_speed
+	$Timer.wait_time = move_time
 	var tween = create_tween()
+	tween.set_parallel()
 	tween.tween_property(self, "global_position", target_pos, move_time)
 	tween.tween_property(self, "scale", Vector2(2.5,2.5), move_time)
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(move_time).timeout
 	GlobalSignal.key_icon.emit()
 	queue_free()

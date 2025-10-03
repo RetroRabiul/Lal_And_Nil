@@ -126,12 +126,13 @@ next_level = 5
 
 [node name="key" parent="." instance=ExtResource("8_40yot")]
 position = Vector2(1763, 668)
+move_speed = 700
 
 [node name="player_1" parent="." instance=ExtResource("9_88f2w")]
 position = Vector2(189, 897)
 
 [node name="player_2" parent="." instance=ExtResource("10_h38nd")]
-position = Vector2(1685, 913)
+position = Vector2(1693, 913)
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(0, 575)

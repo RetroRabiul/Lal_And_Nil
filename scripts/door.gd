@@ -28,7 +28,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group(str(key_owner)):
 		player_count += 1
 		print(player_count, key_owner)
-		GlobalSignal.player_celebrating.emit(key_owner)
+
 		if GlobalVars.key == true:
 			opened = true
 			%DoorAnim.play("open")
@@ -36,15 +36,19 @@ func _on_body_entered(body: Node2D) -> void:
 			%Label.show()
 			if player_count == 2:
 				$Timer.start()
+				GlobalSignal.player_celebrating.emit(key_owner)
+				GlobalSignal.player_celebrating.emit(other_player)
 	if  body.is_in_group(str(other_player)):
 		player_count += 1
 		print(player_count, other_player)
 		if opened:
-			GlobalSignal.player_celebrating.emit(other_player)
+
 			print("player Celebrating")
 			#$Timer.start()
 		if player_count == 2:
 			$Timer.start()
+			GlobalSignal.player_celebrating.emit(other_player)
+			GlobalSignal.player_celebrating.emit(key_owner)
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group(str(key_owner)):
